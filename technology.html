@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology - Chronicles</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d92323;
+            --secondary: #333;
+            --accent: #d92323;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('images/technology/technology_background.png') no-repeat center center/cover;
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://source.unsplash.com/random/1920x1080/?crime,police') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .date-time span {
+            margin-right: 15px;
+        }
+        
+        .weather-widget span {
+            margin-left: 8px;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        .dark-mode-toggle {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .logo-container {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        nav {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 15px 0;
+            display: block;
+            transition: color 0.3s;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links li a.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+        
+        .search-container input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
+            width: 200px;
+        }
+        
+        .search-container button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-container button:hover {
+            background: #b51c1c;
+        }
+        
+        .hamburger {
+            display: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        /* Crime Header */
+        .crime-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1600x600/?crime,investigation') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .crime-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Noto Sans', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .crime-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Breaking News Ticker */
+        .breaking-news {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+        
+        .breaking-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breaking-label {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            margin-right: 20px;
+            font-weight: 700;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+        
+        .ticker {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+        
+        .ticker-content a {
+            color: white;
+            text-decoration: none;
+            margin-right: 40px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .ticker-content a:hover {
+            color: #f8f9fa;
+            text-decoration: underline;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Crime News Grid */
+        .crime-featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .crime-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .crime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .crime-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .crime-card-content {
+            padding: 20px;
+        }
+        
+        .crime-card-content .location {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .crime-card-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        .crime-card-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        /* Expanded Article View */
+        .article-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .article-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .expanded-article {
+            background: #fff;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 8px;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .article-overlay.active .expanded-article {
+            transform: scale(1);
+        }
+        
+        .close-article {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        
+        .close-article:hover {
+            background: #b51c1c;
+        }
+        
+        .article-header {
+            position: relative;
+        }
+        
+        .article-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .article-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+        
+        .article-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .article-title .meta {
+            color: #eee;
+        }
+        
+        .article-body {
+            padding: 30px;
+        }
+        
+        .article-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        /* Crime Timeline */
+        .crime-timeline {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-date {
+            flex: 0 0 120px;
+            text-align: right;
+            padding-right: 30px;
+            position: relative;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .timeline-date::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            border-left: 2px solid var(--primary);
+            background: #fff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-about h3,
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .footer-about h3::after,
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                margin: 15px auto;
+                width: 80%;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .article-header img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date-time,
+            .weather-widget,
+            .social-icons {
+                margin-bottom: 8px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                padding: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .crime-header {
+                padding: 70px 20px;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .crime-header p {
+                font-size: 1rem;
+            }
+            
+            .breaking-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .breaking-label {
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                text-align: left;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+            
+            .timeline-date::after {
+                left: -6px;
+                top: auto;
+                bottom: 0;
+            }
+            
+            .timeline-content {
+                padding-left: 15px;
+                border-left: none;
+                border-top: 2px solid var(--primary);
+                padding-top: 15px;
+                border-radius: 0 0 8px 8px;
+            }
+            
+            .article-header img {
+                height: 200px;
+            }
+            
+            .article-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .crime-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .crime-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="date-time">
+                    <span id="date"></span>
+                    <span id="time"></span>
+                </div>
+                <div class="weather-widget">
+                    <span id="weather-icon"><i class="fas fa-cloud-sun"></i></span>
+                    <span id="weather-temp">24°C</span>
+                    <span id="weather-city">New Delhi</span>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="dark-mode-toggle">
+                        <!-- <i class="fas fa-moon"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chronicles Logo" style="width:70; height: 70; max-width: 70px;">
+                <div class="logo-text">क्रोnicles</div>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="world.html">Crime</a></li>
+                <li><a href="political.html">Political</a></li>
+                <li><a href="sports.html">Cricket</a></li>
+                <li><a href="technology.html" class="active">Technology</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+    <div class="breaking-container">
+        <div class="breaking-label">BREAKING:</div>
+        <div class="ticker">
+            <div class="ticker-content">
+                <a href="#">गूगल पर अमेरिकी अदालत का बड़ा फैसला: विज्ञापन तकनीक में अवैध एकाधिकार का दोषी करार, कंपनी करेगी अपील ​•</a>
+                <a href="#">मेटा के खिलाफ अमेरिकी एंटीट्रस्ट मुकदमा: इंस्टाग्राम और व्हाट्सएप के भविष्य पर संकट ​•</a>
+                <a href="#">बीजिंग में हुआ दुनिया का पहला ह्यूमनॉइड रोबोट हाफ-मैराथन: तकनीक और मानवता के संगम की नई शुरुआत ​•</a>
+                <a href="#">एआई क्रांति: कैसे तकनीकी भविष्य को आकार दे रही है आर्टिफिशियल इंटेलिजेंस ​•</a>
+                <a href="#">इलेक्ट्रिक वाहनों का भविष्य: 2025 में क्या उम्मीद की जाए ​•</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Crime News Header -->
+    <div class="crime-header">
+        <h1>टेक्नोलॉजी न्यूज़</h1>
+        <p>नई तकनीकों, गैजेट्स, इनोवेशन और डिजिटल दुनिया से जुड़ी हर ताज़ा जानकारी। टेक्नोलॉजी की दुनिया में होने वाले बदलावों से हमेशा अपडेट रहें</p>
+        <!-- <p>Latest updates on criminal cases, investigations, and law enforcement activities from across the country. Stay informed about safety and justice.</p> -->
+    </div>
+
+    <main class="container">
+        <!-- Featured Crime News -->
+        <section>
+            <h2 class="section-title">तकनीक सुर्खियाँ</h2>
+            <div class="crime-featured">
+                <!-- CARD 1 -->
+                <article class="crime-card" data-article="article1">
+                    <img src="images/technology/google.png" alt="Crime Investigation">
+                    <div class="crime-card-content">
+                        <span class="location">Haryana</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: आरोपी को लेकर पुलिस ने किया क्राइम सीन का पुनर्निर्माण</h3> -->
+                         <h3>गूगल पर अमेरिकी अदालत का बड़ा फैसला: विज्ञापन तकनीक में अवैध एकाधिकार का दोषी करार, कंपनी करेगी अपील​</h3>
+                        <!-- <p>हरियाणा पुलिस ने कांग्रेस कार्यकर्ता हिमानी नरवाल की हत्या के आरोपी सचिन को क्राइम सीन पर ले जाकर...</p> -->
+                         <p>वर्जीनिया की अमेरिकी जिला न्यायाधीश लियोनी ब्रिंकेमा ने अपने फैसले में कहा कि गूगल ने प्रकाशक विज्ञापन सर्वर और विज्ञापन एक्सचेंज के बाजारों में अवैध रूप से एकाधिकार स्थापित किया है</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 42 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 2 -->
+                <article class="crime-card" data-article="article2">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?police,arrest" alt="Police Arrest"> -->
+                     <img src="images/technology/mata1.jpg" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Maharashtra</span>
+                        <!-- <h3>पुणे बस बलात्कार मामला: आरोपी दत्तात्रेय रामदास गाडे गिरफ्तार</h3> -->
+                         <h3>मेटा के खिलाफ अमेरिकी एंटीट्रस्ट मुकदमा: इंस्टाग्राम और व्हाट्सएप के भविष्य पर संकट​</h3>
+                        <!-- <p>पुणे पुलिस ने बलात्कार के आरोपी गाडे को शिरूर तहसील से गिरफ्तार किया है। शहर में आक्रोश...</p> -->
+                         <p>अमेरिकी संघीय व्यापार आयोग (FTC) द्वारा मेटा प्लेटफॉर्म्स (पूर्व में फेसबुक) के खिलाफ दायर एंटीट्रस्ट मुकदमा तकनीकी उद्योग में एक ऐतिहासिक मोड़ बन गया है</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            <span><i class="far fa-comment"></i> 28 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 3 -->
+                <article class="crime-card" data-article="article3">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?kidnapping,crime" alt="Kidnapping Case"> -->
+                     <img src="images/technology/robot.jpg" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Delhi</span>
+                        <!-- <h3>दिल्ली में बड़ा अपहरण मामला: व्यापारी को 5 करोड़ की फिरौती मांगकर अगवा किया गया</h3> -->
+                         <h3>बीजिंग में आयोजित हुआ दुनिया का पहला ह्यूमनॉइड रोबोट हाफ-मैराथन: तकनीक और मानवता के संगम की नई शुरुआत​</h3>
+                        <!-- <p>दक्षिण दिल्ली के एक प्रमुख व्यापारी को उसके घर के बाहर से अगवा कर लिया गया। अपहरणकर्ताओं ने...</p> -->
+                         <p>19 अप्रैल 2025 को चीन की राजधानी बीजिंग के यीज़ुआंग जिले में एक ऐतिहासिक आयोजन हुआ, जहाँ पहली बार ह्यूमनॉइड रोबोट्स ने इंसानों के साथ हाफ-मैराथन में हिस्सा लिया</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="far fa-comment"></i> 15 comments</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Crime History Timeline -->
+<!-- <section class="crime-timeline">
+    <h2 class="section-title">दिल्ली में अपराध का इतिहास (2000–2025)</h2>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2000</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>देश में सबसे अधिक अपराध दर वाली राजधानी</h3>
+            <p>प्रति 1 लाख पर 399 अपराध, राष्ट्रीय औसत से दोगुना।<br>
+            <strong>हत्या:</strong> 18.2%<br>
+            <strong>अपहरण:</strong> 40.1%<br>
+            <strong>बलात्कार:</strong> 34.7%<br>
+            <strong>चोरी:</strong> 27%</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2005</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>आतंकवाद का प्रहार</h3>
+            <p>29 अक्टूबर को पाहाड़गंज, सरोजिनी नगर और गोविंदपुरी में धमाके।<br>
+            <strong>62 मृत, 200+ घायल</strong></p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2008</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>सिलसिलेवार धमाकों से राजधानी दहली</h3>
+            <p>13 सितंबर को कनॉट प्लेस, करोल बाग और ग्रेटर कैलाश में धमाके।<br>
+            <strong>20 मृत, 100+ घायल</strong></p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2010</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>संपत्ति से जुड़े अपराधों में उछाल</h3>
+            <p>झपटमारी: 1,289 → 1,596<br>
+            वाहन चोरी: 11,892 → 13,794</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2012</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>निर्भया केस और जनआक्रोश</h3>
+            <p>16 दिसंबर: बलात्कार और हत्या कांड।<br>
+            <strong>फास्ट ट्रैक कोर्ट, सख्त कानून, 'निर्भया फंड' लागू</strong></p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2020</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>लॉकडाउन से अपराधों में गिरावट</h3>
+            <p>40% गिरावट, लेकिन घरेलू हिंसा में वृद्धि।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2021</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>महामारी के बाद अपराध में उछाल</h3>
+            <p>कुल अपराध दर: 13% ↑<br>
+            झपटमारी: 15% ↑<br>
+            वरिष्ठ नागरिकों पर अपराध: 9% ↑</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2024</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>नशे से जुड़े अपराधों में वृद्धि</h3>
+            <p>ड्रग्स से जुड़े अपराध: 35% ↑<br>
+            दिल्ली-NCR एक उभरता ड्रग हब</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2025</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>अपराध में गिरावट, रणनीति में सुधार</h3>
+            <p>बेहतर पुलिसिंग, CCTV, सामुदायिक पुलिसिंग और स्मार्ट पेट्रोलिंग से अपराध दर घटी।</p>
+        </div>
+    </div>
+</section> -->
+
+
+        <!-- Video Reports Section -->
+        <section>
+            <h2 class="section-title">Video Reports</h2>
+            <div class="crime-featured">
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1IbTtkvpH5jdRAreGBqlpG42STCxhgOa0/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+                
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: क्राइम सीन का पुनर्निर्माण | CCTV फुटेज</h3> -->
+                        <h3>एआई की प्रगति: मानवीय नौकरियों पर संकट या नए अवसरों की शुरुआत?</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1xHYjzMWv3vHLMkk8_GS4VWP65cYTinJD/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+                
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: सबूत, सवाल और साज़िश | Full Case Analysis</h3> -->
+                        <h3>सोशल मीडिया का सदुपयोग: कंटेंट क्रिएटर्स के लिए डिजिटल बढ़त
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1-_CCkFdX-_f7vHgMU1kHwHaSNXjFe_Wo/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+                
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल केस में नया खुलासा: वीडियो में दिखे संदिग्ध</h3> -->
+                         <h3>भविष्य की एआई और सिनेमा: कल्पना या सच्चाई?
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                
+                
+                <!-- <article class="crime-card">
+                    <video src="videos/crime/Crime bear 2.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>पुणे बस बलात्कार मामला: आरोपी की गिरफ्तारी का वीडियो</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 890K views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="crime-card">
+                    <video src="videos/crime/Crime beat 3.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>नोएडा स्नैचिंग केस: CCTV में कैद हुआ पूरा वाकया</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 890K views</span>
+                        </div>
+                    </div>
+                </article> -->
+                
+                <!-- <article class="crime-card">
+                    <video src="videos/crime3.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>नोएडा स्नैचिंग केस: CCTV में कैद हुआ पूरा वाकया</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 750K views</span>
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Expanded Article Overlays -->
+    <div class="article-overlay" id="article1-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?court,google" alt="Google Court Case"> -->
+                <img src="images/technology/google.png" style="width: 100%; height: auto; object-fit: contain;" alt="">
+                <div class="article-title">
+                    <h2>गूगल पर अमेरिकी अदालत का बड़ा फैसला: विज्ञापन तकनीक में अवैध एकाधिकार का दोषी करार, कंपनी करेगी अपील</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 4 hours ago</span>
+                        <span><i class="far fa-comment"></i> 35 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>गूगल को अमेरिका की एक संघीय अदालत ने विज्ञापन तकनीक (Ad Tech) क्षेत्र में अवैध एकाधिकार (Monopoly) बनाए रखने का दोषी ठहराया है। यह फैसला न्याय विभाग द्वारा दायर उस ऐतिहासिक एंटीट्रस्ट मुकदमे के तहत आया है, जिसमें गूगल पर प्रतिस्पर्धियों को बाज़ार से बाहर करने और खुद को अनुचित लाभ देने का आरोप था।</p>
+                
+                <p>अदालत ने माना कि गूगल ने जानबूझकर अपनी ताकत का दुरुपयोग किया, जिससे छोटे विज्ञापनदाताओं और मीडिया संस्थानों को नुकसान हुआ। यह फैसला डिजिटल विज्ञापन जगत में एक बड़ा मोड़ माना जा रहा है, जो भविष्य में तकनीकी कंपनियों की रणनीतियों को प्रभावित कर सकता है।</p>
+                
+                <p>गूगल ने अदालत के फैसले से असहमति जताई है और कहा है कि वह इस फैसले के खिलाफ अपील करेगी। कंपनी का कहना है कि उसका Ad Tech मॉडल प्रतिस्पर्धा को बढ़ावा देता है और हजारों छोटे व्यवसायों को लाभ पहुंचाता है।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?google,court" alt="Google Court"> -->
+                    <img src="images/technology/google1.jpg" alt="">
+                    <p class="image-caption">अमेरिका में गूगल के खिलाफ चला एंटीट्रस्ट मुकदमा (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>अमेरिकी न्याय विभाग के प्रवक्ता ने कहा कि यह फैसला दर्शाता है कि बड़ी तकनीकी कंपनियों को भी जवाबदेह ठहराया जा सकता है। साथ ही उन्होंने संकेत दिया कि इस दिशा में और भी कड़े कदम उठाए जा सकते हैं।</p>
+                
+                <p>विशेषज्ञों का मानना है कि इस निर्णय के दूरगामी प्रभाव हो सकते हैं और अन्य टेक दिग्गजों के लिए भी यह एक चेतावनी स्वरूप हो सकता है। डिजिटल मार्केट में पारदर्शिता और प्रतिस्पर्धा को बढ़ावा देने के लिए यह एक महत्वपूर्ण कदम माना जा रहा है।</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Article 2 -->
+<div class="article-overlay" id="article2-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="https://source.unsplash.com/random/900x500/?meta,antitrust" alt="Meta Antitrust"> -->
+            <img src="images/technology/mata1.jpg" style="width: 100%; height: auto; object-fit: contain;"  alt="">
+            <div class="article-title">
+                <h2>मेटा के खिलाफ अमेरिकी एंटीट्रस्ट मुकदमा: इंस्टाग्राम और व्हाट्सएप के भविष्य पर संकट​</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 2 hours ago</span>
+                    <span><i class="far fa-comment"></i> 47 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>अमेरिका में मेटा (पूर्व में फेसबुक) के खिलाफ एक एंटीट्रस्ट मुकदमा दायर किया गया है, जिसमें इंस्टाग्राम और व्हाट्सएप जैसी प्रमुख सोशल मीडिया सेवाओं के भविष्य पर संकट पैदा हो सकता है। यह मुकदमा मेटा द्वारा प्रतिस्पर्धियों को बाहर करने के आरोपों पर आधारित है, जो इन प्लेटफॉर्मों के अधिग्रहण के बाद बाजार में अपनी स्थिति को मजबूत कर रहा है।</p>
+            
+            <p>अमेरिकी संघीय व्यापार आयोग (FTC) ने आरोप लगाया है कि मेटा ने इंस्टाग्राम और व्हाट्सएप जैसे प्लेटफॉर्मों का अधिग्रहण करके प्रतिस्पर्धा को नुकसान पहुंचाया है, जो उपभोक्ताओं के लिए बेहतर विकल्पों को खत्म कर देता है। FTC का कहना है कि इन अधिग्रहणों के बाद, मेटा ने इन प्लेटफॉर्मों के उपयोगकर्ता अनुभव को नियंत्रित कर लिया है, जिससे स्वतंत्र विकास और प्रतियोगिता की संभावना खत्म हो गई है।</p>
+            
+            <p>कंपनी के अधिग्रहण के बाद से, इंस्टाग्राम और व्हाट्सएप पर नई सुविधाओं के विकास और उपयोगकर्ताओं की गोपनीयता पर भी सवाल उठे हैं। आलोचकों का कहना है कि इन प्लेटफॉर्मों का मुख्य उद्देश्य अब उपभोक्ताओं को अधिक विज्ञापन और डाटा संग्रहित करना बन गया है, जिससे उपभोक्ताओं की स्वतंत्रता पर असर पड़ता है।</p>
+            
+            <p>मेटा ने इस मुकदमे को राजनीति से प्रेरित बताया है और दावा किया कि उनकी सेवाएं उपयोगकर्ताओं को अधिक मूल्य देती हैं। कंपनी का कहना है कि इन प्लेटफॉर्मों का अधिग्रहण सिर्फ बेहतर सेवा देने के उद्देश्य से किया गया था, ताकि एक ही जगह पर सोशल मीडिया, मैसेजिंग और मीडिया साझेदारी के समाधान प्रदान किए जा सकें। इसके अलावा, मेटा का कहना है कि उनका मुख्य उद्देश्य उपयोगकर्ताओं के लिए एक अधिक इंटरैक्टिव और एंगेजिंग अनुभव सुनिश्चित करना है।</p>
+            
+            <p>मुकदमे के अनुसार, मेटा ने इन प्लेटफॉर्मों का अधिग्रहण इस उद्देश्य से किया था कि इससे प्रतिस्पर्धा को खत्म किया जा सके और बाजार में अपनी स्थिति को मजबूती प्रदान की जा सके। FTC का आरोप है कि इससे उपभोक्ताओं के लिए विकल्पों की कमी हो गई है, जो उनके अधिकारों और स्वतंत्रता को प्रभावित कर सकता है। यदि मेटा इस मुकदमे में हारता है, तो उसे अपनी व्यापारिक नीतियों को पूरी तरह से बदलने की आवश्यकता हो सकती है, और कंपनी को अपने प्लेटफॉर्मों को फिर से विभाजित करना पड़ सकता है।</p>
+            
+            <div class="article-image">
+                <!-- <img src="https://source.unsplash.com/random/800x400/?court,meta" alt="Court Hearing"> -->
+                <img src="images/technology/meta.jpg" alt="">
+                <p class="image-caption">अमेरिकी कोर्ट में मेटा के खिलाफ दायर मुकदमा (प्रतीकात्मक तस्वीर)</p>
+            </div>
+            
+            <p>विश्लेषकों का मानना है कि अगर मेटा इस मुकदमे में हारता है, तो कंपनी को अपने प्लेटफॉर्मों के संचालित तरीके में बड़े बदलाव करने पड़ सकते हैं, और प्रतिस्पर्धियों के लिए नए रास्ते खुल सकते हैं। इसके अलावा, उपभोक्ताओं के डेटा सुरक्षा और गोपनीयता के मुद्दे भी इस मुकदमे के केंद्र में हैं, जो मेटा के लिए एक बड़ी चुनौती हो सकती है। यदि मेटा को दोषी पाया जाता है, तो कंपनी को न केवल अपने व्यवसाय में भारी बदलाव करना पड़ सकता है, बल्कि उसे जुर्माने और अन्य कानूनी कार्रवाई का भी सामना करना पड़ सकता है।</p>
+            
+            <p>यह मुकदमा मेटा के भविष्य के लिए एक महत्वपूर्ण मोड़ हो सकता है, क्योंकि इसने सोशल मीडिया और प्रौद्योगिकी उद्योग में प्रतिस्पर्धा और बाजार नियमन के लिए नए सवाल खड़े कर दिए हैं। आने वाले महीनों में यह स्पष्ट होगा कि मेटा और अन्य प्रमुख कंपनियों पर इस मुकदमे का क्या असर पड़ेगा, और उपभोक्ताओं के लिए इसका क्या अर्थ होगा।</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Article 3 -->
+    <!-- Article 2 -->
+<div class="article-overlay" id="article3-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="https://source.unsplash.com/random/900x500/?robot,marathon" alt="Humanoid Robot Marathon"> -->
+            <img src="images/technology/robot.jpg" alt="">
+            <div class="article-title">
+                <h2>बीजिंग में आयोजित हुआ दुनिया का पहला ह्यूमनॉइड रोबोट हाफ-मैराथन: तकनीक और मानवता के संगम की नई शुरुआत​</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 58 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>बीजिंग में हाल ही में दुनिया का पहला ह्यूमनॉइड रोबोट हाफ-मैराथन आयोजित किया गया, जहां अत्याधुनिक तकनीक और मानवता के बीच एक नया संगम देखने को मिला। इस आयोजन ने विज्ञान और खेल के परिप्रेक्ष्य में तकनीकी विकास को नई दिशा दी है, और यह भविष्य के खेलों में तकनीकी हस्तक्षेप के महत्व को उजागर करता है।</p>
+            
+            <p>ह्यूमनॉइड रोबोट्स को डिजाइन करने के उद्देश्य से इस हाफ-मैराथन का आयोजन किया गया था, ताकि इन मशीनों की गति, सहनशक्ति और मानव जैसे शारीरिक कौशल का परीक्षण किया जा सके। इस दौरान 10 किमी की दौड़ में विभिन्न रोबोट्स ने भाग लिया, और इनकी कार्यप्रणाली और प्रदर्शन ने सभी को चौंका दिया। इन रोबोट्स की डिजाइन और प्रौद्योगिकी, जो इंसान के समान गति और समन्वय के लिए अनुकूलित की गई है, ने न केवल मानव क्षमता को चुनौती दी, बल्कि यह दिखाया कि भविष्य में रोबोट्स को विभिन्न कार्यों के लिए प्रशिक्षित किया जा सकता है।</p>
+            
+            <p>इस कार्यक्रम में विभिन्न प्रकार के रोबोट्स ने भाग लिया, जिनकी रचनाओं में नई तकनीकी प्रगति का समावेश था। इनमें से कुछ रोबोट्स ने दौड़ में अच्छा प्रदर्शन किया, जबकि कुछ तकनीकी गड़बड़ियों के कारण दौड़ में भाग नहीं ले पाए। इस असमर्थता के बावजूद, आयोजन को एक बड़ी सफलता माना गया, क्योंकि यह दर्शाता है कि रोबोट्स को प्रशिक्षित करने में बहुत अधिक सुधार की आवश्यकता है।</p>
+            
+            <p>इस आयोजन का महत्व केवल तकनीकी विकास तक सीमित नहीं था। बीजिंग हाफ-मैराथन में तकनीकी प्रगति और मानवता के बीच के संबंध को नए दृष्टिकोण से प्रस्तुत किया गया। विशेषज्ञों का कहना है कि इस तरह के आयोजनों से यह पता चलता है कि भविष्य में ह्यूमनॉइड रोबोट्स हमारे समाज के विभिन्न क्षेत्रों में सहायक भूमिका निभा सकते हैं, जैसे स्वास्थ्य देखभाल, शिक्षा, और यहां तक कि खेल जगत में भी।</p>
+            
+            <p>उदाहरण के तौर पर, भविष्य में इन रोबोट्स का उपयोग चिकित्सा देखभाल और मरीजों की देखरेख में किया जा सकता है। इसके अलावा, रोबोटिक्स और ए.आई. के क्षेत्र में तेजी से हो रही प्रगति से यह संभव हो सकता है कि ये रोबोट मानवों के साथ मिलकर जटिल कार्यों को आसानी से पूरा कर सकें।</p>
+            
+            <div class="article-image">
+                <!-- <img src="https://source.unsplash.com/random/800x400/?robot,technology" alt="Robot Running"> -->
+                <img src="images/technology/robot1.jpeg" alt="">
+                <p class="image-caption">बीजिंग ह्यूमनॉइड रोबोट हाफ-मैराथन के दौरान दौड़ते हुए रोबोट (प्रतीकात्मक तस्वीर)</p>
+            </div>
+            
+            <p>इस तरह के घटनाक्रम, जैसे बीजिंग का यह ह्यूमनॉइड रोबोट हाफ-मैराथन, भविष्य में हमें एक नई दिशा दे सकते हैं। वे यह दिखाते हैं कि तकनीकी विकास केवल एक विज्ञान नहीं है, बल्कि यह मानवता के बेहतर भविष्य की ओर कदम बढ़ाने का एक जरिया हो सकता है। रोबोटिक्स और ए.आई. के साथ हमारे समाज के सहयोग से कार्यक्षेत्रों में अधिक प्रभावी और सशक्त बदलाव संभव हो सकते हैं।</p>
+            
+            <p>हालांकि, इस नई तकनीक के सामने चुनौतियां भी हैं, जिनमें सामाजिक स्वीकार्यता, कानूनी पहलू और सुरक्षा जैसे मुद्दे शामिल हैं। लेकिन तकनीकी प्रगति के साथ, इन चुनौतियों का समाधान भी निकाला जा सकता है, और भविष्य में ह्यूमनॉइड रोबोट्स हमारे दैनिक जीवन का अहम हिस्सा बन सकते हैं।</p>
+            
+            <p>आखिरकार, यह आयोजन हमें यह सोचने पर मजबूर करता है कि क्या हम तकनीक और मानवता के बीच संतुलन बनाए रख सकते हैं, और क्या भविष्य में रोबोट्स के साथ सहकार्य हमारे समाज के लिए फायदेमंद होगा।</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Chronicles</h3>
+                <p>Chronicles is a leading independent news organization dedicated to providing accurate, unbiased
+                    reporting from around the world. Our team of experienced journalists works around the clock to bring
+                    you the most important stories.</p>
+                <div class="footer-logo">
+                    <i class="fas fa-newspaper"></i> Chronicles
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>News Categories</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crime.html">Crime</a></li>
+                    <li><a href="political.html">Political</a></li>
+                    <li><a href="sports.html">Cricket</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Lady Shri Ram College For Women</p>
+                <p><i class="fas fa-phone"></i> +91-987xxxxx99</p>
+                <p><i class="fas fa-envelope"></i> mishrayogita0018@gmail.com</p>
+                <div class="footer-social">
+                    <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a> -->
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chronicles. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateElement = document.getElementById('date');
+            const timeElement = document.getElementById('time');
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString('en-US', options);
+
+            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('fa-times');
+            this.classList.toggle('fa-bars');
+        });
+
+        // Region filter functionality
+        const regionBtns = document.querySelectorAll('.region-btn');
+        
+        regionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                regionBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would filter the news content
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            this.innerHTML = document.body.classList.contains('dark-mode') ?
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Article expansion functionality
+        const crimeCards = document.querySelectorAll('.crime-card');
+        
+        crimeCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-article');
+                const overlay = document.getElementById(`${articleId}-overlay`);
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when article is open
+            });
+        });
+
+        function closeArticle() {
+            const activeOverlay = document.querySelector('.article-overlay.active');
+            if (activeOverlay) {
+                activeOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        }
+
+        // Close article when clicking outside content
+        const articleOverlays = document.querySelectorAll('.article-overlay');
+        
+        articleOverlays.forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeArticle();
+                }
+            });
+        });
+
+        // Pause all videos when one plays
+        const allVideos = document.querySelectorAll("video");
+        allVideos.forEach(currentVideo => {
+            currentVideo.addEventListener("play", () => {
+                allVideos.forEach(video => {
+                    if (video !== currentVideo) {
+                        video.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

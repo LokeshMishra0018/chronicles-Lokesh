@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronicles - Your Trusted News Source</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="date-time">
+                <span id="date"></span>
+                <span id="time"></span>
+            </div>
+            <div class="weather-widget">
+                <span id="weather-icon"><i class="fas fa-cloud-sun"></i></span>
+                <span id="weather-temp">24°C</span>
+                <span id="weather-city">New Delhi</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <div class="dark-mode-toggle">
+                    <!-- <i class="fas fa-moon"></i> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Edutech Logo" style="width:70; height: 70; max-width: 70px;">
+                <!-- </div>
+            <div class="logo"> -->
+                <!-- <div class="logo-icon"><i class="fas fa-newspaper"></i></div> -->
+                <div class="logo-text">क्रोnicles</div>
+            </div>
+            <!-- <p class="tagline">Your trusted source for the latest updates</p> -->
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <!-- <li><a href="latest.html">Latest News</a></li> -->
+                <li><a href="crime.html">Crime</a></li>
+                <li><a href="political.html">Political</a></li>
+                <li><a href="sports.html">Cricket</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <!-- <li><a href="health.html">baad_me_dalna_h</a></li> -->
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-label">BREAKING:</div>
+        <div class="ticker">
+            <ul>
+                <li><a href="#">दिल्ली के मुस्तफाबाद में इमारत गिरने से 11 की मौत, मकान मालिक सहित कई घायल</a></li>
+                <li><a href="#">वक्फ संशोधन अधिनियम 2025: असदुद्दीन ओवैसी ने बताया मुस्लिम अधिकारों पर सीधा हमला​</a></li>
+                <li><a href="#">वाराणसी गैंगरेप मामला: एसआईटी गठित, पीड़िता के दावों पर उठे सवाल​</a></li>
+                <li><a href="#">डोनाल्ड ट्रंप की टैरिफ नीति और फेडरल रिजर्व के साथ टकराव: अमेरिका की आर्थिक दिशा पर सवाल</a></li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <!-- News Counter -->
+    <div class="news-counter">
+        <div class="counter-item">
+            <span class="counter-number" data-target="12500">50</span>
+            <span class="counter-label">Daily Readers</span>
+        </div>
+        <div class="counter-item">
+            <span class="counter-number" data-target="350">101</span>
+            <span class="counter-label">News Published</span>
+        </div>
+        <div class="counter-item">
+            <span class="counter-number" data-target="5">5</span>
+            <span class="counter-label">Journalists</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Featured News Section -->
+        <section class="featured-news">
+            <h2 class="section-title">प्रमुख ख़बरें</h2>
+            <div class="featured-container">
+                <div class="main-featured">
+                    <img src="images/home/latest1.jpg" alt="Featured News">
+                    <img src="images/home/latest4.jpg" alt="">
+                    <div class="featured-content">
+                        <span class="category world">India</span>
+                        <!-- <h3><a href="home_article1.html">दिल्ली के मुस्तफाबाद में इमारत गिरने से 11 की मौत, मकान मालिक सहित कई घायल</a></h3> -->
+                        <h3><a href="article-delhi-building-collapse.html" target="_blank">दिल्ली के मुस्तफाबाद में इमारत गिरने से 11 की मौत, मकान मालिक सहित कई घायल</a></h3>
+                        <p>शनिवार सुबह दिल्ली के मुस्तफाबाद इलाके में एक चार मंजिला इमारत के ढहने से 11 लोगों की मौत हो गई, जबकि 11 अन्य घायल हो गए। मृतकों में मकान मालिक 60 वर्षीय तहसीन भी शामिल हैं। हादसे में जान गंवाने वालों में से आठ लोग एक ही परिवार के थे, जिनमें तीन महिलाएं और चार बच्चे शामिल हैं</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="far fa-comment"></i> 45 comments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secondary-featured">
+                    <div class="featured-item">
+                        <img src="images/home/latest2.jpg" alt="Business News">
+                        <div class="featured-item-content">
+                            <span class="category business">Latest News</span>
+                            <h4><a href="home_article2.html" target="_blank">वक्फ संशोधन अधिनियम 2025: असदुद्दीन ओवैसी ने बताया मुस्लिम अधिकारों पर सीधा हमला​</a></h4>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <img src="images/home/latest3.jpg" alt="Sports News">
+                        <div class="featured-item-content">
+                            <span class="category sports">Crime</span>
+                            <h4><a href="home_article3.html" target="_blank">वाराणसी गैंगरेप मामला: एसआईटी गठित, पीड़िता के दावों पर उठे सवाल​</a></h4>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <img src="images/home/trump1.jpg" alt="Politics News">
+                        <div class="featured-item-content">
+                            <span class="category politics">Politics</span>
+                            <h4><a href="home_article4.html" target="_blank">डोनाल्ड ट्रंप की टैरिफ नीति और फेडरल रिजर्व के साथ टकराव: अमेरिका की आर्थिक दिशा पर सवाल</a></h4>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="premium-ipl-box">
+                <div class="scorebox-header">
+                  <div class="tournament-info">
+                    <img src="https://www.iplt20.com/assets/images/ipl-logo-new-old.png" alt="IPL" class="tournament-logo">
+                    <div>
+                      <div class="tournament-name">Indian Premier League 2025</div>
+                      <div class="match-info">
+                        <span id="match-number">Match 12</span> • 
+                        <span id="match-venue">Wankhede Stadium, Mumbai</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="live-status">
+                    <div class="live-indicator"></div>
+                    <div class="match-status" id="match-status">In Progress • 35th over</div>
+                  </div>
+                </div>
+              
+                <div class="scorebox-content">
+                  <div class="team-score left-team">
+                    <div class="team-info">
+                      <img src="images/home/MI.png" alt="MI" class="team-logo" id="team1-logo">
+                      <div class="team-name" id="team1-name">Mumbai Indians</div>
+                      <div class="team-abbr" id="team1-abbr">MI</div>
+                    </div>
+                    <div class="score-details">
+                      <div class="score" id="team1-score">187/5</div>
+                      <div class="overs" id="team1-overs">(20 overs)</div>
+                    </div>
+                  </div>
+              
+                  <div class="vs-container">
+                    <div class="vs-circle">VS</div>
+                  </div>
+              
+                  <div class="team-score right-team">
+                    <div class="team-info">
+                      <img src="images/home/CSK.png" alt="CSK" class="team-logo" id="team2-logo">
+                      <div class="team-name" id="team2-name">Chennai Super Kings</div>
+                      <div class="team-abbr" id="team2-abbr">CSK</div>
+                    </div>
+                    <div class="score-details">
+                      <div class="score" id="team2-score">156/3</div>
+                      <div class="overs" id="team2-overs">(35 overs)</div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="scorebox-footer">
+                  <div class="current-play">
+                    <div class="batsmen">
+                      <div class="batsman">
+                        <span class="name">Ruturaj Gaikwad</span>
+                        <span class="status">*</span>
+                        <span class="runs">72 (48)</span>
+                      </div>
+                      <div class="batsman">
+                        <span class="name">Shivam Dube</span>
+                        <span class="status">*</span>
+                        <span class="runs">34 (22)</span>
+                      </div>
+                    </div>
+                    <div class="bowler">
+                      <span class="label">Bowling:</span>
+                      <span class="name">Jasprit Bumrah</span>
+                      <span class="stats">3-0-28-0</span>
+                    </div>
+                  </div>
+                  <div class="match-rates">
+                    <div class="rate">
+                      <span class="label">CRR</span>
+                      <span class="value">8.45</span>
+                    </div>
+                    <div class="rate">
+                      <span class="label">RRR</span>
+                      <span class="value">9.20</span>
+                    </div>
+                    <div class="last-update">
+                      <span class="label">Updated:</span>
+                      <span class="value" id="update-time">Just now</span>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="view-more">
+                  <a href="/ipl-2025/live" class="view-link">View Full Commentary & Scorecard →</a>
+                </div>
+              </div>
+        </section>
+        <!-- Latest News Section
+        <section class="latest-news">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <iframe 
+                        width="100%" 
+                        height="200" 
+                        src="https://www.youtube.com/embed/ufR_08V38sQ" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    
+                    <div class="news-content">
+                        <span class="category technology">Movies</span>
+                        <h3><a href="home_movie1.html" target="_blank">‘द पिट्ट’: 2025 की सबसे प्रभावशाली मेडिकल ड्रामा सीरीज़</a></h3>
+                        <p>Researchers develop new artificial intelligence system that can detect diseases with 95% accuracy, potentially transforming early diagnosis and treatment.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 12 comments</span>
+                        </div>
+                    </div>
+                </article>
+                
+
+                <article class="news-card">
+                    <iframe 
+                        width="100%" 
+                        height="200" 
+                        src="https://www.youtube.com/embed/r-7g08INMSI" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    
+                    <div class="news-content">
+                        <span class="category technology">Movies</span>
+                        <h3><a href="home_movie2.html" target="_blank">केसरी चैप्टर 2 बॉक्स ऑफिस रिपोर्ट: जलियांवाला बाग की गूंज के साथ अक्षय कुमार की फिल्म को मिला दर्शकों का प्यार</a></h3>
+                        <p>Researchers develop new artificial intelligence system that can detect diseases with 95% accuracy, potentially transforming early diagnosis and treatment.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 12 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="news-card">
+                    <iframe 
+                        width="100%" 
+                        height="200" 
+                        src="https://www.youtube.com/embed/fE_OKXUz7bM" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    
+                    <div class="news-content">
+                        <span class="category technology">Movies</span>
+                        <h3><a href="home_movie3.html" target="_blank">जाट बॉक्स ऑफिस रिपोर्ट: देसी जज़्बे और मिट्टी की खुशबू से लबरेज हरियाणवी फिल्म ने मचाया धमाल</a></h3>
+                        <p>Researchers develop new artificial intelligence system that can detect diseases with 95% accuracy, potentially transforming early diagnosis and treatment.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 12 comments</span>
+                        </div>
+                    </div>
+                </article> -->
+                
+                
+
+                <!-- <article class="news-card">
+                    <img src="https://source.unsplash.com/random/400x300/?entertainment" alt="News Image">
+                    <div class="news-content">
+                        <span class="category entertainment">Movies</span>
+                        <h3><a href="#">Blockbuster Movie Breaks Opening Weekend Records</a></h3>
+                        <p>The highly anticipated film surpasses all expectations with massive box office numbers
+                            worldwide, setting new industry benchmarks.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="far fa-comment"></i> 32 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://source.unsplash.com/random/400x300/?science" alt="News Image">
+                    <div class="news-content">
+                        <span class="category science">Science</span>
+                        <h3><a href="#">Astronomers Discover Earth-like Planet in Nearby System</a></h3>
+                        <p>The newly found exoplanet orbits within the habitable zone of its star, raising possibilities
+                            of liquid water and potential for life.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 7 hours ago</span>
+                            <span><i class="far fa-comment"></i> 19 comments</span>
+                        </div>
+                    </div>
+                </article> -->
+            <!-- </div> -->
+
+            <!-- <button class="load-more">Load More News</button> -->
+        <!-- </section> -->
+
+        <!-- Latest News Section -->
+<section class="latest-news">
+    <style>
+        .latest-news {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .news-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            width: 350px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .news-content {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .news-content h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .news-content p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .meta {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .category {
+            display: inline-block;
+            background: #007BFF;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+
+    <h2 class="section-title">Latest News</h2>
+
+    <div class="news-grid">
+
+        <article class="news-card">
+            <iframe 
+                width="100%" 
+                height="200" 
+                src="https://www.youtube.com/embed/ufR_08V38sQ" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+
+            <div class="news-content">
+                <span class="category technology">Movies</span>
+                <h3><a href="home_movie1.html" target="_blank">‘द पिट्ट’: 2025 की सबसे प्रभावशाली मेडिकल ड्रामा सीरीज़</a></h3>
+                <!-- <p>Researchers develop new artificial intelligence system that can detect diseases with 95% accuracy, potentially transforming early diagnosis and treatment.</p> -->
+                 <p>द पिट्ट' की सबसे बड़ी विशेषता इसका वास्तविक समय में प्रस्तुत किया जाना है, जहां प्रत्येक एपिसोड एक घंटे की घटनाओं को दर्शाता है।</p>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 12 comments</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="news-card">
+            <iframe 
+                width="100%" 
+                height="200" 
+                src="https://www.youtube.com/embed/r-7g08INMSI" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+
+            <div class="news-content">
+                <span class="category technology">Movies</span>
+                <h3><a href="home_movie2.html" target="_blank">केसरी चैप्टर 2 बॉक्स ऑफिस रिपोर्ट: जलियांवाला बाग की गूंज के साथ अक्षय कुमार की फिल्म को मिला दर्शकों का प्यार</a></h3>
+                <!-- <p>Researchers develop new artificial intelligence system that can detect diseases with 95% accuracy, potentially transforming early diagnosis and treatment.</p> -->
+                <p>पहले दिन ₹7.84 करोड़ की कमाई के साथ शुरुआत करने वाली फिल्म ने दूसरे दिन ₹17 करोड़ का आंकड़ा पार कर लिया। गुड फ्राइडे की छुट्टी और सकारात्मक वर्ड ऑफ माउथ ने इसे और बढ़ावा दिया।</p>
+    
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 12 comments</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="news-card">
+            <iframe 
+                width="100%" 
+                height="200" 
+                src="https://www.youtube.com/embed/fE_OKXUz7bM" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+
+            <div class="news-content">
+                <span class="category technology">Movies</span>
+                <h3><a href="home_movie3.html" target="_blank">जाट बॉक्स ऑफिस रिपोर्ट: देसी जज़्बे और मिट्टी की खुशबू से लबरेज हरियाणवी फिल्म ने मचाया धमाल</a></h3>
+                <!-- <p>Researchers develop new artificial intelligence system that can detect diseases with 95% accuracy, potentially transforming early diagnosis and treatment.</p> -->
+                <p>फिल्म एक गाँव के नौजवान वीरू की कहानी है जो अपने आत्मसम्मान, परिवार की प्रतिष्ठा और गाँव के हक़ के लिए संघर्ष करता है। फिल्म में पारिवारिक भावनाएं, एक्शन और देसी रोमांस का समावेश है।</p>
+    
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 12 comments</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+        <!-- Category Sections -->
+        <!-- <section class="category-section">
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="world">World</button>
+                <button class="tab-btn" data-category="business">Business</button>
+                <button class="tab-btn" data-category="sports">Sports</button>
+                <button class="tab-btn" data-category="technology">Technology</button>
+            </div>
+
+            <div class="category-content active" id="world">
+                <div class="category-news">
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?europe" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">European Union Announces New Economic Recovery Plan</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?asia" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Diplomatic Tensions Rise in South China Sea Region</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?africa" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">African Nations Collaborate on Renewable Energy Initiative</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?america" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Summit Addresses Migration Challenges in the Americas</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="category-content" id="business">
+                <div class="category-news">
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?stockmarket" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Stock Markets Rally After Positive Economic Indicators</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?cryptocurrency" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Cryptocurrency Regulations Tighten in Major Economies</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?startup" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Tech Startup Secures Record Funding Round</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?trade" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">
+                    </article>
+                </div>
+            </div>
+
+            <div class="category-content" id="sports">
+                <div class="category-news">
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?football" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Champions League Semifinals Set After Dramatic Quarterfinals</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?basketball" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">NBA Playoffs Begin With Several Upsets in Opening Games</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?olympics" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Olympic Committee Announces Host City for 2032 Games</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?tennis" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Grand Slam Tournament Sees Historic Victory</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="category-content" id="technology">
+                <div class="category-news">
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?smartphone" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Next Generation Smartphones to Feature Revolutionary Displays</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?ai" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Ethical Concerns Raised Over Advanced AI Systems</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?robot" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Robotic Assistants Becoming Commonplace in Hospitals</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="category-news-card">
+                        <img src="https://source.unsplash.com/random/300x200/?space" alt="News Image">
+                        <div class="category-news-content">
+                            <h3><a href="#">Private Space Company Announces Lunar Tourism Plans</a></h3>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 7 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        Trending Now Section
+        <section class="trending-news">
+            <h2 class="section-title">Trending Now</h2>
+            <div class="trending-container">
+                <div class="trending-item">
+                    <span class="trending-number">1</span>
+                    <div class="trending-content">
+                        <h3><a href="#">Global Tech Conference Announces Keynote Speakers</a></h3>
+                        <div class="meta">
+                            <span class="category technology">Technology</span>
+                            <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            <span><i class="fas fa-fire"></i> 15k views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trending-item">
+                    <span class="trending-number">2</span>
+                    <div class="trending-content">
+                        <h3><a href="#">New Economic Policy Sparks Market Rally</a></h3>
+                        <div class="meta">
+                            <span class="category business">Business</span>
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="fas fa-fire"></i> 12k views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trending-item">
+                    <span class="trending-number">3</span>
+                    <div class="trending-content">
+                        <h3><a href="#">Breakthrough in Renewable Energy Storage</a></h3>
+                        <div class="meta">
+                            <span class="category science">Science</span>
+                            <span><i class="far fa-clock"></i> 7 hours ago</span>
+                            <span><i class="fas fa-fire"></i> 10k views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trending-item">
+                    <span class="trending-number">4</span>
+                    <div class="trending-content">
+                        <h3><a href="#">Celebrity Couple Announces Engagement</a></h3>
+                        <div class="meta">
+                            <span class="category entertainment">Entertainment</span>
+                            <span><i class="far fa-clock"></i> 9 hours ago</span>
+                            <span><i class="fas fa-fire"></i> 8k views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trending-item">
+                    <span class="trending-number">5</span>
+                    <div class="trending-content">
+                        <h3><a href="#">National Team Advances to Championship Finals</a></h3>
+                        <div class="meta">
+                            <span class="category sports">Sports</span>
+                            <span><i class="far fa-clock"></i> 11 hours ago</span>
+                            <span><i class="fas fa-fire"></i> 7k views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Newsletter Subscription -->
+        <section class="newsletter">
+            <div class="newsletter-container">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for daily news updates delivered to your inbox</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p class="success-message" style="display:none;">Thank you for subscribing to Chronicles!</p>
+            </div>
+        </section>
+
+        <!-- Video News Section -->
+        <!-- <section class="video-news">
+            <h2 class="section-title">Video News</h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3><a href="#">Live Coverage: Presidential Address on Economic Reform</a></h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 25k views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3><a href="#">Exclusive Interview with Tech Innovator</a></h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 18k views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3><a href="#">Behind the Scenes at the International Summit</a></h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 12k views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Chronicles</h3>
+                <p>Chronicles is a leading independent news organization dedicated to providing accurate, unbiased
+                    reporting from around the world. Our team of experienced journalists works around the clock to bring
+                    you the most important stories.</p>
+                <div class="footer-logo">
+                    <i class="fas fa-newspaper"></i> Chronicles
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>News Categories</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crime.html">Crime</a></li>
+                    <li><a href="political.html">Political</a></li>
+                    <li><a href="sports.html">Cricket</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Lady Shri Ram College For Women</p>
+                <p><i class="fas fa-phone"></i> +91-987xxxxx99</p>
+                <p><i class="fas fa-envelope"></i> mishrayogita0018@gmail.com</p>
+                <div class="footer-social">
+                    <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a> -->
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chronicles. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateElement = document.getElementById('date');
+            const timeElement = document.getElementById('time');
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString('en-US', options);
+
+            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000); // Update every minute
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('fa-times');
+            this.classList.toggle('fa-bars');
+        });
+
+        // Category tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.category-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const category = button.getAttribute('data-category');
+                document.getElementById(category).classList.add('active');
+            });
+        });
+
+        // Load more button functionality
+        const loadMoreBtn = document.querySelector('.load-more');
+        let currentPage = 1;
+
+        loadMoreBtn.addEventListener('click', function () {
+            currentPage++;
+            this.textContent = 'Loading...';
+            this.disabled = true;
+
+            // Simulate loading more news
+            setTimeout(() => {
+                const newsGrid = document.querySelector('.news-grid');
+                const newArticles = [
+                    {
+                        category: 'politics',
+                        title: 'New Legislation Proposed to Reform Education System',
+                        desc: 'Lawmakers introduce comprehensive bill aimed at modernizing national education standards and increasing funding.',
+                        time: '10 hours ago',
+                        comments: 7
+                    },
+                    {
+                        category: 'health',
+                        title: 'Study Links Exercise to Improved Mental Health',
+                        desc: 'New research confirms strong connection between regular physical activity and reduced symptoms of depression and anxiety.',
+                        time: '12 hours ago',
+                        comments: 14
+                    },
+                    {
+                        category: 'technology',
+                        title: 'Major Software Update Released for Popular Apps',
+                        desc: 'Several leading mobile applications receive significant updates with new features and security improvements.',
+                        time: '14 hours ago',
+                        comments: 23
+                    }
+                ];
+
+                newArticles.forEach(article => {
+                    const articleElement = document.createElement('article');
+                    articleElement.className = 'news-card';
+                    articleElement.innerHTML = `
+                                <img src="https://source.unsplash.com/random/400x300/?${article.category}" alt="News Image">
+                                <div class="news-content">
+                                    <span class="category ${article.category}">${article.category.charAt(0).toUpperCase() + article.category.slice(1)}</span>
+                                    <h3><a href="#">${article.title}</a></h3>
+                                    <p>${article.desc}</p>
+                                    <div class="meta">
+                                        <span><i class="far fa-clock"></i> ${article.time}</span>
+                                        <span><i class="far fa-comment"></i> ${article.comments} comments</span>
+                                    </div>
+                                </div>
+                            `;
+                    newsGrid.appendChild(articleElement);
+                });
+
+                this.textContent = 'Load More News';
+                this.disabled = false;
+
+                // Scroll to show new content
+                window.scrollBy(0, 300);
+            }, 1000);
+        });
+
+        // Animate counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            const speed = 200;
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Trigger when counter is in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.counter-number').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            this.innerHTML = document.body.classList.contains('dark-mode') ?
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Newsletter form submission
+        const newsletterForm = document.getElementById('newsletter-form');
+        const successMessage = document.querySelector('.success-message');
+
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+
+            if (!emailInput.value || !emailInput.value.includes('@')) {
+                emailInput.style.border = '2px solid #e74c3c';
+                emailInput.placeholder = 'Please enter a valid email';
+                return;
+            }
+
+            // Simulate submission
+            this.style.display = 'none';
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                this.style.display = 'flex';
+                successMessage.style.display = 'none';
+                emailInput.value = '';
+                emailInput.style.border = 'none';
+            }, 3000);
+        });
+
+        // Weather widget simulation
+        function updateWeather() {
+            const cities = [
+                { name: 'New Delhi', temp: '24°C', icon: 'fa-cloud-sun' },
+                { name: 'Mumbai', temp: '28°C', icon: 'fa-sun' },
+                { name: 'Bangalore', temp: '22°C', icon: 'fa-cloud' },
+                { name: 'Kolkata', temp: '26°C', icon: 'fa-cloud-rain' }
+            ];
+
+            let currentCity = 0;
+            const weatherIcon = document.getElementById('weather-icon');
+            const weatherTemp = document.getElementById('weather-temp');
+            const weatherCity = document.getElementById('weather-city');
+
+            setInterval(() => {
+                currentCity = (currentCity + 1) % cities.length;
+                const city = cities[currentCity];
+
+                weatherIcon.innerHTML = `<i class="fas ${city.icon}"></i>`;
+                weatherTemp.textContent = city.temp;
+                weatherCity.textContent = city.name;
+            }, 5000);
+        }
+
+        updateWeather();
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-container input');
+        const searchButton = document.querySelector('.search-container button');
+
+        searchButton.addEventListener('click', function () {
+            if (searchInput.value.trim()) {
+                alert(`Searching for: ${searchInput.value}`);
+                searchInput.value = '';
+            }
+        });
+
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && this.value.trim()) {
+                alert(`Searching for: ${this.value}`);
+                this.value = '';
+            }
+        });
+
+        // Simulate trending news views increment
+        setInterval(() => {
+            const viewCounts = document.querySelectorAll('.fa-fire');
+            viewCounts.forEach(count => {
+                const current = parseInt(count.parentElement.textContent.replace(/\D/g, ''));
+                const increment = Math.floor(Math.random() * 10) + 1;
+                count.parentElement.innerHTML = count.parentElement.innerHTML.replace(
+                    current,
+                    current + increment
+                );
+            });
+        }, 5000);
+    </script>
+</body>
+
+</html>

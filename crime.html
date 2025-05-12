@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime - Chronicles</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d92323;
+            --secondary: #333;
+            --accent: #d92323;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://media.assettype.com/thenewsminute%2Fimport%2Fsites%2Fdefault%2Ffiles%2FCrimeScene_14072021_1200_(1).jpg?w=1024&auto=format%2Ccompress&fit=max') no-repeat center center/cover;
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://source.unsplash.com/random/1920x1080/?crime,police') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .date-time span {
+            margin-right: 15px;
+        }
+        
+        .weather-widget span {
+            margin-left: 8px;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        .dark-mode-toggle {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .logo-container {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        nav {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 15px 0;
+            display: block;
+            transition: color 0.3s;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links li a.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+        
+        .search-container input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
+            width: 200px;
+        }
+        
+        .search-container button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-container button:hover {
+            background: #b51c1c;
+        }
+        
+        .hamburger {
+            display: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        /* Crime Header */
+        .crime-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1600x600/?crime,investigation') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .crime-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Noto Sans', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .crime-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Breaking News Ticker */
+        .breaking-news {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+        
+        .breaking-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breaking-label {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            margin-right: 20px;
+            font-weight: 700;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+        
+        .ticker {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+        
+        .ticker-content a {
+            color: white;
+            text-decoration: none;
+            margin-right: 40px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .ticker-content a:hover {
+            color: #f8f9fa;
+            text-decoration: underline;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Crime News Grid */
+        .crime-featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .crime-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .crime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .crime-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .crime-card-content {
+            padding: 20px;
+        }
+        
+        .crime-card-content .location {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .crime-card-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        .crime-card-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        /* Expanded Article View */
+        .article-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .article-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .expanded-article {
+            background: #fff;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 8px;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .article-overlay.active .expanded-article {
+            transform: scale(1);
+        }
+        
+        .close-article {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        
+        .close-article:hover {
+            background: #b51c1c;
+        }
+        
+        .article-header {
+            position: relative;
+        }
+        
+        .article-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .article-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+        
+        .article-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .article-title .meta {
+            color: #eee;
+        }
+        
+        .article-body {
+            padding: 30px;
+        }
+        
+        .article-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        /* Crime Timeline */
+        .crime-timeline {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-date {
+            flex: 0 0 120px;
+            text-align: right;
+            padding-right: 30px;
+            position: relative;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .timeline-date::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            border-left: 2px solid var(--primary);
+            background: #fff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-about h3,
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .footer-about h3::after,
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                margin: 15px auto;
+                width: 80%;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .article-header img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date-time,
+            .weather-widget,
+            .social-icons {
+                margin-bottom: 8px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                padding: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .crime-header {
+                padding: 70px 20px;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .crime-header p {
+                font-size: 1rem;
+            }
+            
+            .breaking-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .breaking-label {
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                text-align: left;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+            
+            .timeline-date::after {
+                left: -6px;
+                top: auto;
+                bottom: 0;
+            }
+            
+            .timeline-content {
+                padding-left: 15px;
+                border-left: none;
+                border-top: 2px solid var(--primary);
+                padding-top: 15px;
+                border-radius: 0 0 8px 8px;
+            }
+            
+            .article-header img {
+                height: 200px;
+            }
+            
+            .article-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .crime-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .crime-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="date-time">
+                    <span id="date"></span>
+                    <span id="time"></span>
+                </div>
+                <div class="weather-widget">
+                    <span id="weather-icon"><i class="fas fa-cloud-sun"></i></span>
+                    <span id="weather-temp">24°C</span>
+                    <span id="weather-city">New Delhi</span>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="dark-mode-toggle">
+                        <!-- <i class="fas fa-moon"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chronicles Logo" style="width:70; height: 70; max-width: 70px;">
+                <div class="logo-text">क्रोnicles</div>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="world.html" class="active">Crime</a></li>
+                <li><a href="political.html">Political</a></li>
+                <li><a href="sports.html">Cricket</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-container">
+            <div class="breaking-label">BREAKING:</div>
+            <div class="ticker">
+                <div class="ticker-content">
+                    <a href="#">हिमानी नरवाल हत्याकांड: आरोपी सचिन को पुलिस ने क्राइम सीन पर ले जाकर किया पुनर्निर्माण •</a>
+                    <a href="#">पुणे बस बलात्कार मामला: आरोपी दत्तात्रेय रामदास गाडे गिरफ्तार •</a>
+                    <a href="#">दिल्ली में बड़ा अपहरण मामला: व्यापारी को 5 करोड़ की फिरौती मांगकर अगवा किया गया •</a>
+                    <a href="#">मुंबई में ड्रग्स रैकेट का भंडाफोड़, 4 गिरफ्तार •</a>
+                    <a href="#">नोएडा में बाइक सवारों ने महिला से स्नैचिंग की कोशिश, CCTV फुटेज वायरल</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crime News Header -->
+    <div class="crime-header">
+        <h1>क्राइम न्यूज़</h1>
+        <p>देशभर से आपराधिक मामलों, जांचों और कानून प्रवर्तन गतिविधियों से जुड़ी ताज़ा जानकारी। सुरक्षा और न्याय से संबंधित खबरों से जुड़े रहें</p>
+        <!-- <p>Latest updates on criminal cases, investigations, and law enforcement activities from across the country. Stay informed about safety and justice.</p> -->
+    </div>
+
+    <main class="container">
+        <!-- Featured Crime News -->
+        <section>
+            <h2 class="section-title">अपराध सुर्खियाँ</h2>
+            <div class="crime-featured">
+                <!-- CARD 1 -->
+                <article class="crime-card" data-article="article1">
+                    <img src="images/crime/himaniNarwal (2).jpg" alt="Crime Investigation">
+                    <div class="crime-card-content">
+                        <span class="location">Haryana</span>
+                        <h3>हिमानी नरवाल हत्याकांड: आरोपी को लेकर पुलिस ने किया क्राइम सीन का पुनर्निर्माण</h3>
+                        <p>हरियाणा पुलिस ने कांग्रेस कार्यकर्ता हिमानी नरवाल की हत्या के आरोपी सचिन को क्राइम सीन पर ले जाकर...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 42 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 2 -->
+                <article class="crime-card" data-article="article2">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?police,arrest" alt="Police Arrest"> -->
+                     <img src="images/crime/pune1.png" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Maharashtra</span>
+                        <h3>पुणे बस बलात्कार मामला: आरोपी दत्तात्रेय रामदास गाडे गिरफ्तार</h3>
+                        <p>पुणे पुलिस ने बलात्कार के आरोपी गाडे को शिरूर तहसील से गिरफ्तार किया है। शहर में आक्रोश...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            <span><i class="far fa-comment"></i> 28 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 3 -->
+                <article class="crime-card" data-article="article3">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?kidnapping,crime" alt="Kidnapping Case"> -->
+                     <img src="images/crime/gurgram.jpeg" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Delhi</span>
+                        <h3>दिल्ली में बड़ा अपहरण मामला: व्यापारी को 5 करोड़ की फिरौती मांगकर अगवा किया गया</h3>
+                        <p>दक्षिण दिल्ली के एक प्रमुख व्यापारी को उसके घर के बाहर से अगवा कर लिया गया। अपहरणकर्ताओं ने...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="far fa-comment"></i> 15 comments</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- CARD 4 -->
+                <article class="crime-card" data-article="article4">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?drugs,raid" alt="Drugs Raid"> -->
+                     <img src="images/crime/drug.png" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Mumbai</span>
+                        <h3>मुंबई में ड्रग्स रैकेट का भंडाफोड़, 4 गिरफ्तार</h3>
+                        <p>मुंबई पुलिस ने शनिवार देर रात एक बड़े अंतरराष्ट्रीय ड्रग्स तस्करी रैकेट का भंडाफोड़ किया है।</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 7 hours ago</span>
+                            <span><i class="far fa-comment"></i> 32 comments</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- CARD 5 -->
+                <article class="crime-card" data-article="article5">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?snatching,crime" alt="Snatching Incident"> -->
+                     <img src="images/crime/bike.png" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Noida</span>
+                        <h3>नोएडा में बाइक सवारों ने महिला से स्नैचिंग की कोशिश, CCTV फुटेज वायरल</h3>
+                        <p>नोएडा सेक्टर 76 में दो बाइक सवारों ने एक महिला से जबरन उसका पर्स छीनने की कोशिश की।</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 9 hours ago</span>
+                            <span><i class="far fa-comment"></i> 18 comments</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- CARD 6 -->
+                <article class="crime-card" data-article="article6">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?cybercrime,hacking" alt="Cyber Crime"> -->
+                     <img src="images/crime/fraud.png" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Bangalore</span>
+                        <h3>बैंगलोर में बड़ा साइबर फ्रॉड: 200 से ज्यादा लोगों के बैंक खाते खाली</h3>
+                        <p>साइबर अपराधियों ने एक नए तरीके से लोगों के बैंक खातों से पैसे निकाल लिए। पुलिस ने केस दर्ज किया है।</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 11 hours ago</span>
+                            <span><i class="far fa-comment"></i> 25 comments</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Crime History Timeline -->
+<section class="crime-timeline">
+    <h2 class="section-title">दिल्ली में अपराध का इतिहास (2000–2025)</h2>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2000</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>देश में सबसे अधिक अपराध दर वाली राजधानी</h3>
+            <p>प्रति 1 लाख पर 399 अपराध, राष्ट्रीय औसत से दोगुना।<br>
+            <strong>हत्या:</strong> 18.2%<br>
+            <strong>अपहरण:</strong> 40.1%<br>
+            <strong>बलात्कार:</strong> 34.7%<br>
+            <strong>चोरी:</strong> 27%</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2005</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>आतंकवाद का प्रहार</h3>
+            <p>29 अक्टूबर को पाहाड़गंज, सरोजिनी नगर और गोविंदपुरी में धमाके।<br>
+            <strong>62 मृत, 200+ घायल</strong></p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2008</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>सिलसिलेवार धमाकों से राजधानी दहली</h3>
+            <p>13 सितंबर को कनॉट प्लेस, करोल बाग और ग्रेटर कैलाश में धमाके।<br>
+            <strong>20 मृत, 100+ घायल</strong></p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2010</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>संपत्ति से जुड़े अपराधों में उछाल</h3>
+            <p>झपटमारी: 1,289 → 1,596<br>
+            वाहन चोरी: 11,892 → 13,794</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2012</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>निर्भया केस और जनआक्रोश</h3>
+            <p>16 दिसंबर: बलात्कार और हत्या कांड।<br>
+            <strong>फास्ट ट्रैक कोर्ट, सख्त कानून, 'निर्भया फंड' लागू</strong></p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2020</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>लॉकडाउन से अपराधों में गिरावट</h3>
+            <p>40% गिरावट, लेकिन घरेलू हिंसा में वृद्धि।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2021</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>महामारी के बाद अपराध में उछाल</h3>
+            <p>कुल अपराध दर: 13% ↑<br>
+            झपटमारी: 15% ↑<br>
+            वरिष्ठ नागरिकों पर अपराध: 9% ↑</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2024</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>नशे से जुड़े अपराधों में वृद्धि</h3>
+            <p>ड्रग्स से जुड़े अपराध: 35% ↑<br>
+            दिल्ली-NCR एक उभरता ड्रग हब</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2025</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>अपराध में गिरावट, रणनीति में सुधार</h3>
+            <p>बेहतर पुलिसिंग, CCTV, सामुदायिक पुलिसिंग और स्मार्ट पेट्रोलिंग से अपराध दर घटी।</p>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Video Reports Section -->
+        <section>
+            <h2 class="section-title">Video Reports</h2>
+            <div class="crime-featured">
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1DZm2GWtt714sor6k8697lmyPbXenzlSW/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: क्राइम सीन का पुनर्निर्माण | CCTV फुटेज</h3> -->
+                        <h3>कोलकाता बलात्कार कांड: भारत में महिलाओं की सुरक्षा पर फिर उठा गुस्सा
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1E4lavq_srIjfBGrtjBm6HwDs4fjBcrBm/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: सबूत, सवाल और साज़िश | Full Case Analysis</h3> -->
+                        <h3>बढ़ते अपराध के रुझान: हालिया घटनाएं और उनका समाज पर प्रभाव
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1MW_buRnu3_pBrXIQvstGOrjADd9iPPap/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल केस में नया खुलासा: वीडियो में दिखे संदिग्ध</h3> -->
+                         <h3>अपराध और सतर्कता: क्या वाकई आपका मोहल्ला सुरक्षित है?
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                
+                
+                <!-- <article class="crime-card">
+                    <video src="videos/crime/Crime bear 2.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>पुणे बस बलात्कार मामला: आरोपी की गिरफ्तारी का वीडियो</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 890K views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="crime-card">
+                    <video src="videos/crime/Crime beat 3.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>नोएडा स्नैचिंग केस: CCTV में कैद हुआ पूरा वाकया</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 890K views</span>
+                        </div>
+                    </div>
+                </article> -->
+                
+                <!-- <article class="crime-card">
+                    <video src="videos/crime3.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>नोएडा स्नैचिंग केस: CCTV में कैद हुआ पूरा वाकया</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 750K views</span>
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Expanded Article Overlays -->
+    <!-- Article 1 -->
+    <div class="article-overlay" id="article1-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?crime,investigation" alt="Crime Investigation"> -->
+                 <img src="images/crime/himaniNarwal (2).jpg" alt="himaniNarwal">
+                <div class="article-title">
+                    <h2>हिमानी नरवाल हत्याकांड: आरोपी को लेकर पुलिस ने किया क्राइम सीन का पुनर्निर्माण</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 1 hour ago</span>
+                        <span><i class="far fa-comment"></i> 42 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>हरियाणा पुलिस ने बुधवार को कांग्रेस कार्यकर्ता हिमानी नरवाल की हत्या के आरोपी सचिन को रोहतक स्थित मृतका के आवास पर ले जाकर अपराध स्थल का पुनर्निर्माण किया। पिछले सप्ताह हाईवे के पास एक सूटकेस में हिमानी का शव मिलने के बाद से यह मामला चर्चा में है।</p>
+                
+                <p>मृतका की मां, सविता नरवाल, ने पुलिस की कार्रवाई पर असंतोष जताते हुए आरोपी के लिए मृत्युदंड की मांग की है। उन्होंने चेतावनी दी कि यदि सचिन को मृत्युदंड नहीं दिया गया, तो वह आत्महत्या कर लेंगी और इसके लिए हरियाणा सरकार और प्रशासन जिम्मेदार होंगे।</p>
+                
+                <p>पुलिस के अनुसार, आरोपी सचिन ने अपने बयान में कई महत्वपूर्ण जानकारियां दी हैं जो इस मामले में नए मोड़ ला सकती हैं। हालांकि, पुलिस ने इन जानकारियों को सार्वजनिक करने से इनकार कर दिया है, क्योंकि यह जांच को प्रभावित कर सकता है।</p>
+                
+                <p>इस मामले में अब तक कुल 5 लोगों को गिरफ्तार किया जा चुका है, जिनमें सचिन प्रमुख आरोपी है। पुलिस का कहना है कि वह अन्य संदिग्धों की तलाश कर रही है जो इस मामले में शामिल हो सकते हैं।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?crime,scene" alt="Crime Scene"> -->
+                     <img src="images/crime/himaniNarwal (1).jpg" alt="crime-scene">
+                    <p class="image-caption">हिमानी नरवाल हत्याकांड के आरोपी सचिन को पुलिस ले जा रही है (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>हिमानी नरवाल के परिवार ने आरोप लगाया है कि यह हत्या एक सुनियोजित षड्यंत्र का हिस्सा थी और इसमें कुछ प्रभावशाली लोग शामिल हैं। उन्होंने सीबीआई जांच की मांग की है, लेकिन अभी तक सरकार ने इस पर कोई फैसला नहीं लिया है।</p>
+                
+                <p>पुलिस आयुक्त ने बताया कि जल्द ही इस मामले में चार्जशीट दाखिल की जाएगी और कोर्ट में मामला पेश किया जाएगा। उन्होंने आश्वासन दिया कि इस मामले में न्याय सुनिश्चित किया जाएगा और दोषियों को कड़ी सजा दिलवाई जाएगी।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="article-overlay" id="article2-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?police,arrest" alt="Police Arrest"> -->
+                 <img src="images/crime/pune1.png" alt="">
+                <div class="article-title">
+                    <h2>पुणे बस बलात्कार मामला: आरोपी दत्तात्रेय रामदास गाडे गिरफ्तार</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 3 hours ago</span>
+                        <span><i class="far fa-comment"></i> 28 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>पुणे पुलिस की अपराध शाखा ने स्वारगेट बस स्टेशन बलात्कार मामले के मुख्य आरोपी दत्तात्रेय रामदास गाडे को शुक्रवार देर रात शिरूर तहसील से गिरफ्तार कर लिया।</p>
+                
+                <p>गाडे पर पहले से कई आपराधिक मामले दर्ज हैं। महिला संगठनों ने कड़ी सजा की मांग की है और पुणे में सुरक्षा बढ़ाई गई है। प्रशासन की जिम्मेदारी पर फिर सवाल उठे हैं।</p>
+                
+                <p>पुलिस आयुक्त डॉ. रविंद्र सिंह ने बताया कि आरोपी को गिरफ्तार करने के लिए पुलिस ने 72 घंटे तक लगातार काम किया। उन्होंने कहा कि यह मामला संवेदनशील है और पीड़िता को न्याय दिलाने के लिए हर संभव प्रयास किया जाएगा।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?police,station" alt="Police Station"> -->
+                     <img src="images/crime/pune1.png" alt="">
+                    <p class="image-caption">पुणे पुलिस मुख्यालय जहां आरोपी को पेश किया गया (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>महाराष्ट्र महिला आयोग की अध्यक्ष रूपाली चक्रवर्ती ने इस मामले में त्वरित कार्रवाई के लिए पुलिस की सराहना की है, लेकिन साथ ही उन्होंने शहर में महिला सुरक्षा को लेकर गंभीर सवाल उठाए हैं। उन्होंने कहा कि ऐसे मामलों में आरोपियों को जल्द से जल्द सजा मिलनी चाहिए।</p>
+                
+                <p>स्थानीय निवासियों ने बताया कि आरोपी गाडे का व्यवहार अक्सर अशिष्ट और धमकी भरा होता था, लेकिन किसी ने उसके खिलाफ शिकायत दर्ज नहीं कराई। पुलिस ने इस मामले में और गहन जांच जारी रखी है और संभावना जताई है कि और लोगों को गिरफ्तार किया जा सकता है।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="article-overlay" id="article3-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?kidnapping,crime" alt="Kidnapping Case"> -->
+                 <img src="images/crime/gurgram.jpeg" alt="">
+                <div class="article-title">
+                    <h2>दिल्ली में बड़ा अपहरण मामला: व्यापारी को 5 करोड़ की फिरौती मांगकर अगवा किया गया</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 5 hours ago</span>
+                        <span><i class="far fa-comment"></i> 15 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>दक्षिण दिल्ली के एक प्रमुख व्यापारी को उसके घर के बाहर से अगवा कर लिया गया। अपहरणकर्ताओं ने 5 करोड़ रुपये की फिरौती मांगी है। पुलिस ने विशेष टीम गठित कर आरोपियों की तलाश शुरू कर दी है।</p>
+                
+                <p>पीड़ित को साकेत इलाके में उसके आवास के बाहर से तीन बंदूकधारियों ने अगवा किया। घटना की सीसीटीवी फुटेज में देखा जा सकता है कि आरोपियों ने पीड़ित को जबरन एक कार में बैठा लिया और फरार हो गए।</p>
+                
+                <p>दिल्ली पुलिस आयुक्त संजय अरोड़ा ने बताया कि यह एक अच्छी तरह से योजनाबद्ध अपहरण था और आरोपी पीड़ित के बारे में पहले से जानकारी रखते थे। उन्होंने आश्वासन दिया कि जल्द ही पीड़ित को सुरक्षित छुड़ा लिया जाएगा और आरोपियों को गिरफ्तार किया जाएगा।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?kidnapping,police" alt="Kidnapping Police"> -->
+                     <img src="images/crime/gurgram1.jpg" alt="">
+                    <p class="image-caption">दिल्ली पुलिस अपहरण मामले की जांच कर रही है (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>पीड़ित के परिवार ने बताया कि अपहरणकर्ताओं ने उन्हें फोन कर 5 करोड़ रुपये की फिरौती मांगी है और धमकी दी है कि अगर पुलिस को सूचना दी गई तो वे पीड़ित को नुकसान पहुंचा देंगे। हालांकि, परिवार ने तुरंत पुलिस को सूचना दे दी।</p>
+                
+                <p>सूत्रों के अनुसार, पुलिस ने आरोपियों के कुछ संभावित ठिकानों पर छापेमारी की है और उनके मोबाइल फोन लोकेशन को ट्रेस करने का प्रयास कर रही है। पुलिस ने आसपास के राज्यों की पुलिस को भी सतर्क कर दिया है ताकि आरोपी राज्य की सीमा पार न कर सकें।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article 4 -->
+    <div class="article-overlay" id="article4-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?drugs,raid" alt="Drugs Raid"> -->
+                 <img src="images/crime/drug.png" alt="">
+                <div class="article-title">
+                    <h2>मुंबई में ड्रग्स रैकेट का भंडाफोड़, 4 गिरफ्तार</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 7 hours ago</span>
+                        <span><i class="far fa-comment"></i> 32 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>मुंबई पुलिस ने शनिवार देर रात एक बड़े अंतरराष्ट्रीय ड्रग्स तस्करी रैकेट का भंडाफोड़ किया है। पुलिस ने 4 आरोपियों को गिरफ्तार किया है और 2 करोड़ रुपये से अधिक मूल्य के ड्रग्स जब्त किए हैं।</p>
+                
+                <p>यह कार्रवाई नारकोटिक्स कंट्रोल ब्यूरो (एनसीबी) और मुंबई पुलिस की संयुक्त टीम ने वर्सोवा इलाके में की। आरोपी एक अंतरराष्ट्रीय ड्रग्स सिंडिकेट से जुड़े होने का शक है जो भारत में ड्रग्स सप्लाई करता था।</p>
+                
+                <p>एनसीबी के जोनल डायरेक्टर समीर वानखेड़े ने बताया कि यह गिरोह विदेशों से ड्रग्स मंगवाकर मुंबई और गोवा के अमीर युवाओं को सप्लाई करता था। उन्होंने कहा कि यह केस डार्क वेब और क्रिप्टोकरेंसी के इस्तेमाल से जुड़ा हो सकता है।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?drugs,police" alt="Drugs Police"> -->
+                     <img src="images/crime/drug1.jpg" alt="">
+                    <p class="image-caption">मुंबई पुलिस द्वारा जब्त किए गए ड्रग्स (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>गिरफ्तार किए गए आरोपियों में एक विदेशी नागरिक भी शामिल है। पुलिस का कहना है कि यह गिरोह पिछले दो साल से सक्रिय था और उसने अब तक 100 करोड़ रुपये से अधिक के ड्रग्स की तस्करी की है।</p>
+                
+                <p>पुलिस ने आरोपियों के घरों और गोदामों पर छापेमारी की है जहां से कई महत्वपूर्ण दस्तावेज और डिजिटल साक्ष्य बरामद किए गए हैं। पुलिस ने बताया कि यह जांच और विस्तारित हो सकती है और कुछ और गिरफ्तारियां की जा सकती हैं।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article 5 -->
+    <div class="article-overlay" id="article5-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?snatching,crime" alt="Snatching Incident"> -->
+                 <img src="images/crime/bike.png" alt="">
+                <div class="article-title">
+                    <h2>नोएडा में बाइक सवारों ने महिला से स्नैचिंग की कोशिश, CCTV फुटेज वायरल</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 9 hours ago</span>
+                        <span><i class="far fa-comment"></i> 18 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>नोएडा सेक्टर 76 में दो बाइक सवारों ने एक महिला से जबरन उसका पर्स छीनने की कोशिश की। घटना का सीसीटीवी फुटेज सोशल मीडिया पर वायरल हो गया है, जिसमें साफ देखा जा सकता है कि कैसे दो युवकों ने महिला पर हमला किया।</p>
+                
+                <p>पीड़िता ने बताया कि वह सुबह करीब 7 बजे अपने घर के पास से गुजर रही थीं कि अचानक दो बाइक सवार आए और उनका पर्स छीनने की कोशिश की। हालांकि, पीड़िता के चिल्लाने पर आसपास के लोग इकट्ठा हो गए और आरोपी वहां से भाग निकले।</p>
+                
+                <p>नोएडा पुलिस ने इस मामले में एफआईआर दर्ज की है और आरोपियों की तलाश शुरू कर दी है। पुलिस आयुक्त ने बताया कि सीसीटीवी फुटेज के आधार पर आरोपियों की पहचान जल्द ही की जाएगी और उन्हें गिरफ्तार किया जाएगा।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?cctv,crime" alt="CCTV Crime"> -->
+                     <img src="images/crime/bike1.png" alt="">
+                    <p class="image-caption">घटना का सीसीटीवी फुटेज जो वायरल हुआ (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>स्थानीय निवासियों ने शिकायत की है कि पिछले कुछ महीनों से इस इलाके में स्नैचिंग की घटनाएं बढ़ी हैं, लेकिन पुलिस ने पर्याप्त कार्रवाई नहीं की है। उन्होंने मांग की है कि इलाके में पुलिस पेट्रोलिंग बढ़ाई जाए और अधिक सीसीटीवी कैमरे लगाए जाएं।</p>
+                
+                <p>महिला सुरक्षा को लेकर स्थानीय महिला संगठनों ने भी विरोध प्रदर्शन किया है और मांग की है कि आरोपियों को जल्द से जल्द गिरफ्तार किया जाए। पुलिस ने आश्वासन दिया है कि जल्द ही इस मामले में कार्रवाई की जाएगी और इलाके में सुरक्षा बढ़ाई जाएगी।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article 6 -->
+    <div class="article-overlay" id="article6-overlay">
+        <div class="expanded-article">
+            <div class="close-article" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="article-header">
+                <!-- <img src="https://source.unsplash.com/random/900x500/?cybercrime,hacking" alt="Cyber Crime"> -->
+                 <img src="images/crime/fraud.png" alt="">
+                <div class="article-title">
+                    <h2>बैंगलोर में बड़ा साइबर फ्रॉड: 200 से ज्यादा लोगों के बैंक खाते खाली</h2>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 11 hours ago</span>
+                        <span><i class="far fa-comment"></i> 25 comments</span>
+                        <span><i class="fas fa-share-alt"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body">
+                <p>बैंगलोर साइबर क्राइम पुलिस ने एक बड़े साइबर फ्रॉड का भंडाफोड़ किया है जिसमें 200 से अधिक लोगों के बैंक खातों से पैसे निकाल लिए गए। आरोपियों ने एक नए तरीके से लोगों के ओटीपी और बैंक विवरण चुराए और उनके खातों से लाखों रुपये निकाल लिए।</p>
+                
+                <p>पुलिस ने बताया कि आरोपी लोगों को फोन करके खुद को बैंक अधिकारी बताते थे और उन्हें यह बताकर भरोसा दिलाते थे कि उनके बैंक खाते में कोई अनधिकृत गतिविधि हुई है। इसके बाद वे पीड़ितों को एक लिंक भेजते थे जिस पर क्लिक करने से उनके फोन में मैलवेयर इंस्टॉल हो जाता था।</p>
+                
+                <p>साइबर क्राइम विशेषज्ञ डॉ. राजेश नायक ने बताया कि यह एक परिष्कृत साइबर हमला था जिसमें आरोपियों ने सोशल इंजीनियरिंग तकनीक का इस्तेमाल किया। उन्होंने कहा कि इस तरह के मामलों में पीड़ितों को तुरंत अपने बैंक को सूचना देनी चाहिए और साइबर सेल में शिकायत दर्ज करानी चाहिए।</p>
+                
+                <div class="article-image">
+                    <!-- <img src="https://source.unsplash.com/random/800x400/?cyber,security" alt="Cyber Security"> -->
+                     <img src="images/crime/fraud1.png" alt="">
+                    <p class="image-caption">बैंगलोर साइबर क्राइम पुलिस ने फ्रॉड का भंडाफोड़ किया (प्रतीकात्मक तस्वीर)</p>
+                </div>
+                
+                <p>पुलिस ने अब तक इस मामले में 3 आरोपियों को गिरफ्तार किया है और उनके कंप्यूटर और मोबाइल फोन जब्त किए हैं। जांच में पता चला है कि यह गिरोह पिछले 6 महीनों से सक्रिय था और उसने देश भर के 200 से अधिक लोगों को निशाना बनाया है।</p>
+                
+                <p>बैंकिंग अधिकारियों ने ग्राहकों को सलाह दी है कि वे किसी भी अज्ञात व्यक्ति को अपना बैंक विवरण या ओटीपी न बताएं और किसी भी संदिग्ध लिंक पर क्लिक न करें। उन्होंने कहा कि बैंक कभी भी ग्राहकों से फोन पर उनका पासवर्ड या ओटीपी नहीं मांगते हैं।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Chronicles</h3>
+                <p>Chronicles is a leading independent news organization dedicated to providing accurate, unbiased
+                    reporting from around the world. Our team of experienced journalists works around the clock to bring
+                    you the most important stories.</p>
+                <div class="footer-logo">
+                    <i class="fas fa-newspaper"></i> Chronicles
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>News Categories</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crime.html">Crime</a></li>
+                    <li><a href="political.html">Political</a></li>
+                    <li><a href="sports.html">Cricket</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Lady Shri Ram College For Women</p>
+                <p><i class="fas fa-phone"></i> +91-987xxxxx99</p>
+                <p><i class="fas fa-envelope"></i> mishrayogita0018@gmail.com</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chronicles. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateElement = document.getElementById('date');
+            const timeElement = document.getElementById('time');
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString('en-US', options);
+
+            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('fa-times');
+            this.classList.toggle('fa-bars');
+        });
+
+        // Region filter functionality
+        const regionBtns = document.querySelectorAll('.region-btn');
+        
+        regionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                regionBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would filter the news content
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            this.innerHTML = document.body.classList.contains('dark-mode') ?
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Article expansion functionality
+        const crimeCards = document.querySelectorAll('.crime-card');
+        
+        crimeCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-article');
+                const overlay = document.getElementById(`${articleId}-overlay`);
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when article is open
+            });
+        });
+
+        function closeArticle() {
+            const activeOverlay = document.querySelector('.article-overlay.active');
+            if (activeOverlay) {
+                activeOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        }
+
+        // Close article when clicking outside content
+        const articleOverlays = document.querySelectorAll('.article-overlay');
+        
+        articleOverlays.forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeArticle();
+                }
+            });
+        });
+
+        // Pause all videos when one plays
+        const allVideos = document.querySelectorAll("video");
+        allVideos.forEach(currentVideo => {
+            currentVideo.addEventListener("play", () => {
+                allVideos.forEach(video => {
+                    if (video !== currentVideo) {
+                        video.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

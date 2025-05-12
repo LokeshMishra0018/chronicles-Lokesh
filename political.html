@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political - Chronicles</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d92323;
+            --secondary: #333;
+            --accent: #d92323;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        body {
+            background-color: white;
+            /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://media.assettype.com/thenewsminute%2Fimport%2Fsites%2Fdefault%2Ffiles%2FCrimeScene_14072021_1200_(1).jpg?w=1024&auto=format%2Ccompress&fit=max') no-repeat center center/cover; */
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://source.unsplash.com/random/1920x1080/?crime,police') no-repeat center center/cover; */
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .date-time span {
+            margin-right: 15px;
+        }
+        
+        .weather-widget span {
+            margin-left: 8px;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        .dark-mode-toggle {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .logo-container {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        nav {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 15px 0;
+            display: block;
+            transition: color 0.3s;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links li a.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+        
+        .search-container input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
+            width: 200px;
+        }
+        
+        .search-container button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-container button:hover {
+            background: #b51c1c;
+        }
+        
+        .hamburger {
+            display: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        /* Crime Header */
+        .crime-header {
+            /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1600x600/?crime,investigation') no-repeat center center/cover; */
+            background-color: rgb(69, 3, 3);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .crime-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Noto Sans', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .crime-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Breaking News Ticker */
+        .breaking-news {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+        
+        .breaking-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breaking-label {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            margin-right: 20px;
+            font-weight: 700;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+        
+        .ticker {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+        
+        .ticker-content a {
+            color: white;
+            text-decoration: none;
+            margin-right: 40px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .ticker-content a:hover {
+            color: #f8f9fa;
+            text-decoration: underline;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Crime News Grid */
+        .crime-featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .crime-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .crime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .crime-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .crime-card-content {
+            padding: 20px;
+        }
+        
+        .crime-card-content .location {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .crime-card-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        .crime-card-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        /* Expanded Article View */
+        .article-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .article-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .expanded-article {
+            background: #fff;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 8px;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .article-overlay.active .expanded-article {
+            transform: scale(1);
+        }
+        
+        .close-article {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        
+        .close-article:hover {
+            background: #b51c1c;
+        }
+        
+        .article-header {
+            position: relative;
+        }
+        
+        .article-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .article-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+        
+        .article-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .article-title .meta {
+            color: #eee;
+        }
+        
+        .article-body {
+            padding: 30px;
+        }
+        
+        .article-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        /* Crime Timeline */
+        .crime-timeline {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-date {
+            flex: 0 0 120px;
+            text-align: right;
+            padding-right: 30px;
+            position: relative;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .timeline-date::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            border-left: 2px solid var(--primary);
+            background: #fff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-about h3,
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .footer-about h3::after,
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                margin: 15px auto;
+                width: 80%;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .article-header img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date-time,
+            .weather-widget,
+            .social-icons {
+                margin-bottom: 8px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                padding: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .crime-header {
+                padding: 70px 20px;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .crime-header p {
+                font-size: 1rem;
+            }
+            
+            .breaking-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .breaking-label {
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                text-align: left;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+            
+            .timeline-date::after {
+                left: -6px;
+                top: auto;
+                bottom: 0;
+            }
+            
+            .timeline-content {
+                padding-left: 15px;
+                border-left: none;
+                border-top: 2px solid var(--primary);
+                padding-top: 15px;
+                border-radius: 0 0 8px 8px;
+            }
+            
+            .article-header img {
+                height: 200px;
+            }
+            
+            .article-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .crime-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .crime-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="date-time">
+                    <span id="date"></span>
+                    <span id="time"></span>
+                </div>
+                <div class="weather-widget">
+                    <span id="weather-icon"><i class="fas fa-cloud-sun"></i></span>
+                    <span id="weather-temp">24°C</span>
+                    <span id="weather-city">New Delhi</span>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="dark-mode-toggle">
+                        <!-- <i class="fas fa-moon"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chronicles Logo" style="width:70; height: 70; max-width: 70px;">
+                <div class="logo-text">क्रोnicles</div>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="crime.html">Crime</a></li>
+                <li><a href="political.html" class="active">Political</a></li>
+                <li><a href="sports.html">Cricket</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-container">
+            <div class="breaking-label">POLITICAL NEWS:</div>
+            <div class="ticker">
+                <div class="ticker-content">
+                    <a href="#">डोनाल्ड ट्रंप की 2024 की जीत का भारतीय अर्थव्यवस्था पर प्रभाव ​•</a>
+                    <a href="#">दिल्ली विधानसभा चुनाव 2025: महिला मतदाताओं की भागीदारी ने रचा इतिहास ​•</a>
+                    <a href="#">दिल्ली में नया सियासी अध्याय: 27 साल बाद भाजपा की ऐतिहासिक जीत ​•</a>
+                    <a href="#">भारत में महिला सशक्तिकरण: 2025 तक सरकार की योजनाओं की समीक्षा ​•</a>
+                    <a href="#">कांग्रेस का भविष्य: आगामी लोकसभा चुनावों के लिए रणनीति ​•</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Crime News Header -->
+    <div class="crime-header">
+        <h1>राजनीतिक समाचार</h1>
+        <p>देशभर से आपराधिक मामलों, जांचों और कानून प्रवर्तन गतिविधियों से जुड़ी ताज़ा जानकारी। सुरक्षा और न्याय से संबंधित खबरों से जुड़े रहें</p>
+        <!-- <p>Latest updates on criminal cases, investigations, and law enforcement activities from across the country. Stay informed about safety and justice.</p> -->
+    </div>
+
+    <main class="container">
+        <!-- Featured Crime News -->
+        <section>
+            <h2 class="section-title">अपराध सुर्खियाँ</h2>
+            <div class="crime-featured">
+                <!-- CARD 1 -->
+                <article class="crime-card" data-article="article1">
+                    <img src="images/political/trump.jpg" alt="trump">
+                    <div class="crime-card-content">
+                        <span class="location">Haryana</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: आरोपी को लेकर पुलिस ने किया क्राइम सीन का पुनर्निर्माण</h3> -->
+                         <h3>डोनाल्ड ट्रंप की 2024 की जीत का भारतीय अर्थव्यवस्था पर प्रभाव</h3>
+                        <!-- <p>हरियाणा पुलिस ने कांग्रेस कार्यकर्ता हिमानी नरवाल की हत्या के आरोपी सचिन को क्राइम सीन पर ले जाकर...</p> -->
+                        <p>डोनाल्ड ट्रंप की 2024 में अमेरिकी राष्ट्रपति पद पर वापसी भारतीय अर्थव्यवस्था के लिए कई संभावनाएं और चुनौतियां लेकर आ सकती है। उनके पहले कार्यकाल के दौरान उन्होंने "अमेरिका फर्स्ट" नीति अपनाई थी, जिसके चलते अमेरिका और अन्य देशों के व्यापारिक संबंधों में कई बदलाव देखे गए। अगर ट्रंप दोबारा सत्ता में आते हैं...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 42 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 2 -->
+                <article class="crime-card" data-article="article2">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?police,arrest" alt="Police Arrest"> -->
+                     <img src="images/political/voting1.png" alt="voting">
+                    <div class="crime-card-content">
+                        <span class="location">Maharashtra</span>
+                        <!-- <h3>पुणे बस बलात्कार मामला: आरोपी दत्तात्रेय रामदास गाडे गिरफ्तार</h3> -->
+                         <h3>दिल्ली विधानसभा चुनाव 2025: महिला मतदाताओं की भागीदारी ने रचा इतिहास</h3>
+                        <!-- <p>पुणे पुलिस ने बलात्कार के आरोपी गाडे को शिरूर तहसील से गिरफ्तार किया है। शहर में आक्रोश...</p> -->
+                        <p>दिल्ली विधानसभा चुनाव 2025 में एक ऐतिहासिक परिवर्तन देखा गया, जहां महिला मतदाताओं की भागीदारी पुरुषों से अधिक रही। यह पहली बार है जब महिलाओं ने मतदान में पुरुषों को पीछे छोड़ा है, जो लोकतंत्र में महिलाओं की बढ़ती सक्रियता और जागरूकता का प्रतीक है...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            <span><i class="far fa-comment"></i> 28 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 3 -->
+                <article class="crime-card" data-article="article3">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?kidnapping,crime" alt="Kidnapping Case"> -->
+                     <img src="images/political/delhi.png" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Delhi</span>
+                        <!-- <h3>दिल्ली में बड़ा अपहरण मामला: व्यापारी को 5 करोड़ की फिरौती मांगकर अगवा किया गया</h3> -->
+                         <h3>दिल्ली में नया सियासी अध्याय: 27 साल बाद भाजपा की ऐतिहासिक जीत</h3>
+                        <!-- <p>दक्षिण दिल्ली के एक प्रमुख व्यापारी को उसके घर के बाहर से अगवा कर लिया गया। अपहरणकर्ताओं ने...</p> -->
+                        <p>भाजपा ने इस चुनाव में मध्यवर्गीय वोटरों को लुभाने के लिए आयकर में कटौती जैसे कदम उठाए। इसके अलावा, पार्टी ने सरकारी स्कूलों और स्वास्थ्य सेवाओं में सुधार, मुफ्त बिजली, और गरीब महिलाओं को मासिक भत्ता देने जैसे वादे किए...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="far fa-comment"></i> 15 comments</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- CARD 4
+                <article class="crime-card" data-article="article4">
+                    <img src="https://source.unsplash.com/random/600x400/?drugs,raid" alt="Drugs Raid">
+                    <div class="crime-card-content">
+                        <span class="location">Mumbai</span>
+                        <h3>मुंबई में ड्रग्स रैकेट का भंडाफोड़, 4 गिरफ्तार</h3>
+                        <p>मुंबई पुलिस ने शनिवार देर रात एक बड़े अंतरराष्ट्रीय ड्रग्स तस्करी रैकेट का भंडाफोड़ किया है।</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 7 hours ago</span>
+                            <span><i class="far fa-comment"></i> 32 comments</span>
+                        </div>
+                    </div>
+                </article> -->
+                
+                <!-- CARD 5 -->
+                <!-- <article class="crime-card" data-article="article5">
+                    <img src="https://source.unsplash.com/random/600x400/?snatching,crime" alt="Snatching Incident">
+                    <div class="crime-card-content">
+                        <span class="location">Noida</span>
+                        <h3>नोएडा में बाइक सवारों ने महिला से स्नैचिंग की कोशिश, CCTV फुटेज वायरल</h3>
+                        <p>नोएडा सेक्टर 76 में दो बाइक सवारों ने एक महिला से जबरन उसका पर्स छीनने की कोशिश की।</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 9 hours ago</span>
+                            <span><i class="far fa-comment"></i> 18 comments</span>
+                        </div>
+                    </div>
+                </article> -->
+                
+                <!-- CARD 6 -->
+                <!-- <article class="crime-card" data-article="article6">
+                    <img src="https://source.unsplash.com/random/600x400/?cybercrime,hacking" alt="Cyber Crime">
+                    <div class="crime-card-content">
+                        <span class="location">Bangalore</span>
+                        <h3>बैंगलोर में बड़ा साइबर फ्रॉड: 200 से ज्यादा लोगों के बैंक खाते खाली</h3>
+                        <p>साइबर अपराधियों ने एक नए तरीके से लोगों के बैंक खातों से पैसे निकाल लिए। पुलिस ने केस दर्ज किया है।</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 11 hours ago</span>
+                            <span><i class="far fa-comment"></i> 25 comments</span>
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+        </section>
+
+        <!-- Reservation Timeline -->
+<section class="crime-timeline">
+    <h2 class="section-title">भारत में आरक्षण का इतिहास</h2>
+
+    <!-- पूर्व-स्वतंत्रता काल -->
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1902</strong><br>
+            पूर्व-स्वतंत्रता काल
+        </div>
+        <div class="timeline-content">
+            <h3>कोल्हापुर में 50% आरक्षण</h3>
+            <p>शाहू जी महाराज ने पिछड़ी जातियों के लिए 50% आरक्षण लागू किया।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1919</strong><br>
+            पूर्व-स्वतंत्रता काल
+        </div>
+        <div class="timeline-content">
+            <h3>अलग निर्वाचन व्यवस्था की शुरुआत</h3>
+            <p>भारत सरकार अधिनियम के तहत दलितों सहित विभिन्न समुदायों को अलग प्रतिनिधित्व मिला।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1932</strong><br>
+            पूर्व-स्वतंत्रता काल
+        </div>
+        <div class="timeline-content">
+            <h3>पूना समझौता</h3>
+            <p>गांधीजी और डॉ. अम्बेडकर के बीच समझौते से दलितों के लिए आरक्षित सीटें तय की गईं।</p>
+        </div>
+    </div>
+
+    <!-- स्वतंत्र भारत में आरक्षण -->
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1950</strong><br>
+            संविधान लागू
+        </div>
+        <div class="timeline-content">
+            <h3>SC/ST के लिए आरक्षण</h3>
+            <p>अनुच्छेद 15, 16, 330, 332 के तहत शिक्षा, नौकरी और राजनीति में आरक्षण।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1951</strong><br>
+            पहला संशोधन
+        </div>
+        <div class="timeline-content">
+            <h3>पिछड़े वर्गों के लिए विशेष प्रावधान</h3>
+            <p>पहले संविधान संशोधन के तहत अनुमति मिली।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1953</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>काका कालेलकर आयोग</h3>
+            <p>पिछड़े वर्गों के लिए गठित आयोग, लेकिन सिफारिशें लागू नहीं हुईं।</p>
+        </div>
+    </div>
+
+    <!-- मंडल आयोग और OBC आरक्षण -->
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>1979–1992</strong><br>
+            मंडल युग
+        </div>
+        <div class="timeline-content">
+            <h3>मंडल आयोग और OBC आरक्षण</h3>
+            <p>27% आरक्षण की सिफारिश और सुप्रीम कोर्ट द्वारा 50% सीमा तय। "क्रीमी लेयर" सिद्धांत लागू।</p>
+        </div>
+    </div>
+
+    <!-- 21वीं सदी में आरक्षण -->
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2006</strong><br>
+            21वीं सदी
+        </div>
+        <div class="timeline-content">
+            <h3>OBC आरक्षण लागू</h3>
+            <p>IIT, IIM जैसे केंद्रीय संस्थानों में आरक्षण लागू।</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2019</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>103वां संविधान संशोधन</h3>
+            <p>EWS वर्ग के लिए 10% आरक्षण — पहली बार आर्थिक आधार पर आरक्षण।</p>
+        </div>
+    </div>
+
+    <!-- हाल की बहसें -->
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>2022–2025</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>EWS पर सुप्रीम कोर्ट की मुहर और नई बहसें</h3>
+            <p>सुप्रीम कोर्ट ने आर्थिक आरक्षण को वैध ठहराया। OBC उपवर्गीकरण और जातिगत जनगणना की माँग तेज।</p>
+        </div>
+    </div>
+
+    <!-- कुल आरक्षण -->
+    <div class="timeline-item">
+        <div class="timeline-date">
+            <strong>वर्तमान</strong>
+        </div>
+        <div class="timeline-content">
+            <h3>भारत में आरक्षण श्रेणियाँ (केंद्र)</h3>
+            <p>
+                SC: 15%<br>
+                ST: 7.5%<br>
+                OBC: 27%<br>
+                EWS: 10%<br>
+                <strong>कुल: 59.5%</strong> (कुछ राज्यों में 50% से अधिक)
+            </p>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Video Reports Section -->
+        <section>
+            <h2 class="section-title">Video Reports</h2>
+            <div class="crime-featured">
+                <article class="crime-card">
+                    <iframe src="https://drive.google.com/file/d/14Z1dpVyKw9Af-1EFtA0ZQCwrMJaiev9f/preview" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: क्राइम सीन का पुनर्निर्माण | CCTV फुटेज</h3> -->
+                        <h3>आरक्षण पर नई सोच: जाति से वर्ग की ओर बदलाव
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                
+                <article class="crime-card">
+                    <iframe src="https://drive.google.com/file/d/1w5HOdCr9YyhWIkj59Dtml5egbJ7kWN8j/preview" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: क्राइम सीन का पुनर्निर्माण | CCTV फुटेज</h3> -->
+                        <h3>दो-जेंडर की सोच और भारतीय रूढ़िवाद में उसकी झलक
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                
+                <article class="crime-card">
+                    <iframe src="https://drive.google.com/file/d/1tmCZwFbocT12VZm1auO0bRCqLel19S3N/preview" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>नई वीडियो: दिल्ली हत्याकांड का नया CCTV एंगल</h3> -->
+                         <h3>जब सत्ता लोकतंत्र को परखती है: ट्रंप युग की राजनीति और उसका वैश्विक असर
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="fas fa-eye"></i> 875K views</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Expanded Article Overlays -->
+    <!-- Article 1 -->
+
+
+<!-- Popup for Expanded Article -->
+<div class="article-overlay" id="article1-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="images/crime/himaniNarwal (2).jpg" alt="himaniNarwal"> -->
+             <img src="images/political/trump.jpg" alt="">
+            <div class="article-title">
+                <h2>डोनाल्ड ट्रंप की 2024 की जीत का भारतीय अर्थव्यवस्था पर प्रभाव</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 42 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>डोनाल्ड ट्रंप की 2024 में अमेरिकी राष्ट्रपति पद पर वापसी भारतीय अर्थव्यवस्था के लिए कई संभावनाएं और चुनौतियां लेकर आ सकती है। उनके पहले कार्यकाल के दौरान उन्होंने "अमेरिका फर्स्ट" नीति अपनाई थी, जिसके चलते अमेरिका और अन्य देशों के व्यापारिक संबंधों में कई बदलाव देखे गए। अगर ट्रंप दोबारा सत्ता में आते हैं, तो उनकी नीतियों का असर भारत पर व्यापक रूप से पड़ेगा, खासकर व्यापार, निवेश, आईटी और सेवा क्षेत्र, मुद्रा विनिमय दर, रोजगार और द्विपक्षीय संबंधों के संदर्भ में।</p>
+
+            <h3>व्यापार और निर्यात पर संभावित प्रभाव</h3>
+            <p>डोनाल्ड ट्रंप का कार्यकाल व्यापारिक संरक्षणवाद (protectionism) पर आधारित रहा है, जिसका अर्थ है कि वे अमेरिकी उद्योगों को प्राथमिकता देते हैं और विदेशी उत्पादों पर अधिक शुल्क लगाने की नीति अपनाते हैं। पिछले कार्यकाल में ट्रंप प्रशासन ने भारतीय वस्त्र, फार्मास्यूटिकल्स (pharmaceuticals) और आईटी सेवाओं पर अतिरिक्त शुल्क लगाया था, जिससे भारत के निर्यातकों को नुकसान हुआ। यदि 2024 में वे दोबारा सत्ता में आते हैं, तो यह संभव है कि वे फिर से भारत के कुछ प्रमुख निर्यात उत्पादों पर टैरिफ बढ़ा सकते हैं।</p>
+
+            <p>भारत अमेरिका को कई उत्पादों का निर्यात करता है, जिनमें फार्मास्यूटिकल्स, कपड़ा, रसायन, इंजीनियरिंग गुड्स और आईटी सेवाएं शामिल हैं। अगर ट्रंप इन उत्पादों पर शुल्क बढ़ाते हैं, तो भारतीय कंपनियों की प्रतिस्पर्धात्मकता (competitiveness) प्रभावित हो सकती है और अमेरिका में भारतीय निर्यात में गिरावट आ सकती है। इसके चलते भारतीय कंपनियों को नए बाजारों की तलाश करनी पड़ सकती है या वे घरेलू बाजार में अपनी उपस्थिति मजबूत करने के लिए नई रणनीतियां अपना सकती हैं।</p>
+
+            <h3>आईटी और सेवा क्षेत्र पर प्रभाव</h3>
+            <p>भारत का आईटी और सेवा क्षेत्र अमेरिका पर अत्यधिक निर्भर है। भारतीय आईटी कंपनियां जैसे TCS, Infosys, Wipro और HCL अमेरिकी बाजार में अपनी सेवाएं प्रदान करती हैं और इनका एक बड़ा हिस्सा आउटसोर्सिंग पर आधारित है। ट्रंप का प्रशासन पहले भी आउटसोर्सिंग के खिलाफ सख्त रुख अपना चुका है और अगर वे दोबारा सत्ता में आते हैं, तो वे आईटी कंपनियों पर अतिरिक्त कर लगाने या आउटसोर्सिंग को हतोत्साहित करने के लिए नई नीतियां लागू कर सकते हैं।</p>
+
+            <p>इसके अलावा, H-1B वीजा कार्यक्रम में सख्ती होने की संभावना है, जिससे भारतीय पेशेवरों को अमेरिका में नौकरी पाने में मुश्किलें आ सकती हैं। H-1B वीजा भारतीय आईटी पेशेवरों के लिए एक प्रमुख जरिया रहा है, जिसके तहत वे अमेरिकी कंपनियों के लिए काम कर सकते हैं। अगर ट्रंप प्रशासन इस वीजा पर प्रतिबंध लगाता है या इसकी संख्या को सीमित करता है, तो भारतीय आईटी कंपनियों को अमेरिका में स्थानीय कर्मचारियों को ऊँची लागत पर नियुक्त करना पड़ेगा, जिससे उनके लाभ में गिरावट आ सकती है।</p>
+
+            <h3>अमेरिकी कर कटौती और भारतीय बाजार पर प्रभाव</h3>
+            <p>यदि ट्रंप अपने पिछले कार्यकाल की तरह कॉरपोरेट टैक्स में कटौती करते हैं और अमेरिकी कंपनियों को अधिक प्रोत्साहन देते हैं, तो यह अमेरिका की अर्थव्यवस्था को मजबूती प्रदान कर सकता है। जब अमेरिकी अर्थव्यवस्था तेजी से बढ़ती है, तो इसका सकारात्मक प्रभाव वैश्विक बाजारों पर भी पड़ता है। इससे भारतीय कंपनियों के लिए निवेश के नए अवसर खुल सकते हैं और निर्यात को भी बढ़ावा मिल सकता है।</p>
+
+            <p>हालांकि, अगर ट्रंप प्रशासन अमेरिका में निवेश को आकर्षित करने के लिए विदेशी निवेश पर कड़े नियम लागू करता है, तो कुछ बहुराष्ट्रीय कंपनियां (MNCs) भारत की बजाय अमेरिका में निवेश करने को प्राथमिकता दे सकती हैं। इससे भारत में प्रत्यक्ष विदेशी निवेश (FDI) पर नकारात्मक प्रभाव पड़ सकता है।</p>
+            <img src="images/political/trump1.jpg" width="100%" alt="">
+            <h3>डॉलर और भारतीय रुपये पर प्रभाव</h3>
+            <p>ट्रंप प्रशासन की आर्थिक नीतियों का असर अमेरिकी डॉलर की मजबूती पर भी पड़ सकता है। अगर अमेरिका ब्याज दरों में बढ़ोतरी करता है, तो डॉलर और मजबूत हो सकता है, जिससे भारतीय रुपये की कीमत गिर सकती है। रुपये का अवमूल्यन (devaluation) जहां भारतीय निर्यातकों के लिए फायदेमंद हो सकता है, वहीं इससे आयात महंगा हो जाएगा।</p>
+
+            <p>भारत तेल और अन्य महत्वपूर्ण वस्तुओं का आयात करता है, और रुपये की कमजोरी से इन उत्पादों की लागत बढ़ सकती है, जिससे महंगाई दर (inflation) में इजाफा होगा। इसके अलावा, विदेशी निवेशक (FIIs) मजबूत डॉलर की ओर आकर्षित हो सकते हैं, जिससे भारतीय बाजारों में पूंजी निकासी (capital outflow) बढ़ सकती है। इससे भारतीय शेयर बाजार में अस्थिरता आ सकती है और निवेशकों को नुकसान हो सकता है।</p>
+
+            <h3>अमेरिका-भारत द्विपक्षीय संबंध और रक्षा क्षेत्र पर प्रभाव</h3>
+            <p>डोनाल्ड ट्रंप की नीतियां भारत-अमेरिका संबंधों को भी प्रभावित कर सकती हैं। अमेरिका भारत का एक महत्वपूर्ण रणनीतिक साझेदार (strategic partner) है, और दोनों देशों के बीच रक्षा, व्यापार और तकनीकी सहयोग लगातार बढ़ रहा है। ट्रंप प्रशासन भारत को रक्षा क्षेत्र में सहयोग देने का इच्छुक रहा है, और यदि वे पुनः राष्ट्रपति बनते हैं, तो भारत को रक्षा क्षेत्र में नई तकनीकें, सैन्य उपकरण और निवेश मिलने की संभावना बनी रहेगी।</p>
+
+            <p>ट्रंप प्रशासन का चीन विरोधी रुख भारत के लिए एक अवसर बन सकता है। अमेरिका-चीन व्यापार युद्ध के चलते कई वैश्विक कंपनियां चीन से अपने विनिर्माण केंद्रों (manufacturing hubs) को स्थानांतरित करना चाहती हैं। यदि भारत सही नीतियां अपनाता है, तो वह इन कंपनियों को आकर्षित कर सकता है और अपनी विनिर्माण क्षमता को बढ़ा सकता है।</p>
+
+            <h3>"आत्मनिर्भर भारत" पहल और भारतीय अर्थव्यवस्था</h3>
+            <p>यदि ट्रंप प्रशासन भारत के प्रति व्यापारिक प्रतिबंधों को बढ़ाता है, तो यह भारत के लिए अपनी "आत्मनिर्भर भारत" पहल को और अधिक गति देने का अवसर हो सकता है। सरकार घरेलू उत्पादन और निर्यात को बढ़ावा देने के लिए नई नीतियां अपना सकती है, जिससे भारतीय अर्थव्यवस्था अधिक आत्मनिर्भर बन सकेगी। इसके लिए भारत को निवेशकों के लिए बेहतर व्यापारिक वातावरण तैयार करना होगा, बुनियादी ढांचे को विकसित करना होगा और तकनीकी नवाचार को बढ़ावा देना होगा।</p>
+
+            <h3>निष्कर्ष: चुनौतियां और अवसर दोनों मौजूद हैं</h3>
+            <p>डोनाल्ड ट्रंप की 2024 की जीत भारत के लिए कई संभावनाएं और चुनौतियां लेकर आएगी। यदि अमेरिका व्यापार प्रतिबंध और वीजा नियमों को कड़ा करता है, तो भारत की आईटी, निर्यात और सेवा क्षेत्र पर प्रतिकूल प्रभाव पड़ सकता है। हालांकि, यदि अमेरिका की अर्थव्यवस्था मजबूत होती है और वहां निवेश में वृद्धि होती है, तो भारतीय कंपनियों को भी इसका अप्रत्यक्ष लाभ मिल सकता है।</p>
+
+            <p>भारत के लिए यह आवश्यक होगा कि वह अपनी नीतियों को वैश्विक परिवर्तनों के अनुसार तैयार करे। "आत्मनिर्भर भारत", घरेलू विनिर्माण, निर्यात विविधीकरण (export diversification) और मजबूत आर्थिक सुधारों के जरिए भारत अमेरिकी नीतियों से उत्पन्न चुनौतियों का सामना कर सकता है और अपनी अर्थव्यवस्था को और सशक्त बना सकता है।</p>
+
+            <p>आने वाले समय में भारतीय रिज़र्व बैंक (RBI) और सरकार को सतर्क रहकर आर्थिक नीतियों को संतुलित करना होगा, ताकि वैश्विक आर्थिक परिवर्तनों से उत्पन्न जोखिमों को कम किया जा सके।</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Article 2 -->
+
+
+<!-- Popup for Expanded Article -->
+<div class="article-overlay" id="article2-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="images/crime/himaniNarwal (3).jpg" alt="himaniNarwal"> -->
+             <img src="images/political/voting1.png" alt="">
+            <div class="article-title">
+                <h2>दिल्ली विधानसभा चुनाव 2025: महिला मतदाताओं की भागीदारी ने रचा इतिहास</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 42 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>दिल्ली विधानसभा चुनाव 2025 में एक ऐतिहासिक परिवर्तन देखा गया, जहां महिला मतदाताओं की भागीदारी पुरुषों से अधिक रही। यह पहली बार है जब महिलाओं ने मतदान में पुरुषों को पीछे छोड़ा है, जो लोकतंत्र में महिलाओं की बढ़ती सक्रियता और जागरूकता का प्रतीक है।</p>
+
+            <h3>महिला मतदाताओं की बढ़ी भागीदारी</h3>
+            <p>चुनाव आयोग द्वारा जारी आंकड़ों के अनुसार, दिल्ली में कुल 1,55,24,858 पंजीकृत मतदाताओं में से 94,51,997 ने अपने मताधिकार का प्रयोग किया, जो कुल मतदान का 60.54% है। इनमें से पुरुष मतदाताओं की संख्या 83,49,645 थी, जिनमें से 50,42,966 (60.20%) ने मतदान किया, जबकि महिला मतदाताओं की संख्या 71,73,952 थी, जिनमें से 44,08,629 (60.92%) ने मतदान किया। यह आंकड़े दर्शाते हैं कि महिलाओं ने पुरुषों की तुलना में 0.72% अधिक मतदान किया।</p>
+
+            <h3>विधानसभा क्षेत्रों में महिलाओं की भागीदारी</h3>
+            <p>दिल्ली के 70 विधानसभा क्षेत्रों में से 40 में महिलाओं का मतदान प्रतिशत पुरुषों से अधिक रहा। विशेष रूप से दक्षिण, दक्षिण-पूर्व, मध्य, उत्तर-पश्चिम और दक्षिण-पश्चिम दिल्ली के कई निर्वाचन क्षेत्रों में यह प्रवृत्ति देखी गई। उदाहरण के लिए, ओखला में पंजीकृत महिला मतदाताओं में से 58.2% ने मतदान किया, जबकि पुरुषों में यह आंकड़ा 52.5% था, जो 5% से अधिक का अंतर दर्शाता है।</p>
+
+            <h3>महिला उम्मीदवारों की स्थिति</h3>
+            <p>2025 के चुनाव में कुल 699 उम्मीदवारों में से 96 महिलाएं थीं, जो कुल उम्मीदवारों का लगभग 14% है। यह संख्या 1972 के बाद सबसे अधिक है, जो राजनीति में महिलाओं की बढ़ती भागीदारी को दर्शाती है। दिलचस्प बात यह है कि महिलाएं पुरुषों की तुलना में कम उम्र में राजनीति में प्रवेश कर रही हैं और अधिक शिक्षित हैं।</p>
+
+            <p>20-30 वर्ष की आयु वर्ग में 9% महिला उम्मीदवार हैं, जबकि पुरुष उम्मीदवार केवल 6% हैं। इसी प्रकार, 31-40 वर्ष की आयु वर्ग में 26% महिला उम्मीदवार हैं, जबकि पुरुषों का प्रतिशत 21% है। इन आंकड़ों से स्पष्ट होता है कि अब महिलाएं न केवल मतदान में आगे हैं, बल्कि वे चुनाव लड़ने के लिए भी तैयार हैं।</p>
+
+            <h3>महिलाओं की बढ़ती राजनीतिक जागरूकता</h3>
+            <p>महिलाओं की इस बढ़ती भागीदारी के पीछे कई महत्वपूर्ण कारण हैं:</p>
+            <ul>
+                <li>शिक्षा का प्रसार: महिलाओं में शिक्षा का स्तर बढ़ा है, जिससे उनकी राजनीतिक जागरूकता में वृद्धि हुई है।</li>
+                <li>आर्थिक सशक्तिकरण: सरकारी योजनाओं और स्वयं सहायता समूहों के माध्यम से महिलाओं की आर्थिक स्थिति में सुधार हुआ है, जिससे वे स्वतंत्र निर्णय लेने में सक्षम हुई हैं।</li>
+                <li>सामाजिक समर्थन: परिवार और समाज से मिल रहे समर्थन ने महिलाओं को मतदान के प्रति प्रोत्साहित किया है।</li>
+                <li>सरकारी योजनाओं का प्रभाव: महिलाओं के लिए चलाई जा रही योजनाओं, जैसे मुफ्त बस यात्रा, ने उन्हें मतदान के लिए प्रेरित किया है।</li>
+            </ul>
+
+            <h3>राजनीतिक दलों के लिए संदेश</h3>
+            <p>महिलाओं की इस बढ़ती भागीदारी ने राजनीतिक दलों के लिए एक स्पष्ट संदेश दिया है कि उन्हें महिलाओं की आवश्यकताओं और मुद्दों को अपने एजेंडे में प्राथमिकता देनी होगी। महिला सुरक्षा, शिक्षा, स्वास्थ्य सेवाएं और रोजगार के अवसर जैसे मुद्दों पर ध्यान केंद्रित करना अब आवश्यक हो गया है।</p>
+
+            <p>पिछले कुछ वर्षों में कई राजनीतिक दलों ने महिला केंद्रित योजनाओं को अपने चुनावी घोषणापत्र में शामिल किया है, लेकिन अब समय आ गया है कि वे इन योजनाओं को प्रभावी रूप से लागू करें।</p>
+
+            <h3>भविष्य की दिशा</h3>
+            <p>महिलाओं की इस सक्रियता से न केवल लोकतंत्र मजबूत होगा, बल्कि समाज के समग्र विकास में भी योगदान मिलेगा। यह परिवर्तन दर्शाता है कि महिलाएं अब केवल घरेलू जिम्मेदारियों तक सीमित नहीं हैं, बल्कि वे देश की राजनीति में भी महत्वपूर्ण भूमिका निभाने के लिए तैयार हैं।</p>
+
+            <p>दिल्ली विधानसभा चुनाव 2025 में महिलाओं की इस ऐतिहासिक भागीदारी ने यह साबित कर दिया है कि यदि उन्हें उचित अवसर और समर्थन मिले, तो वे किसी भी क्षेत्र में अग्रणी भूमिका निभा सकती हैं। यह परिवर्तन न केवल दिल्ली के लिए, बल्कि पूरे देश के लिए प्रेरणादायक है।</p>
+
+            <h3>दिल्ली चुनाव 2025: महिला मतदाता पहली बार पुरुषों से आगे</h3>
+            <p>दिल्ली विधानसभा चुनाव 2025 में इतिहास रचते हुए महिलाओं का मतदान प्रतिशत पहली बार पुरुषों से अधिक रहा। चुनाव आयोग के अनुसार, कुल 60.92% महिला मतदाताओं ने अपने मताधिकार का प्रयोग किया, जबकि पुरुषों में यह आंकड़ा 60.20% रहा। दिल्ली के 70 विधानसभा क्षेत्रों में से 40 में महिलाओं का मतदान प्रतिशत पुरुषों से ज्यादा था। खासकर दक्षिण, उत्तर-पश्चिम और मध्य दिल्ली में महिलाओं की भागीदारी उल्लेखनीय रही।</p>
+
+            <p>महिला वोटिंग में वृद्धि के पीछे शिक्षा, सरकारी योजनाओं और बढ़ती राजनीतिक जागरूकता जैसे कारण माने जा रहे हैं। इस रिकॉर्ड मतदान ने राजनीतिक दलों को यह संदेश दिया है कि उन्हें महिला सुरक्षा, शिक्षा, स्वास्थ्य और रोजगार जैसे मुद्दों को अधिक प्राथमिकता देनी होगी। यह बदलाव राजनीति में महिलाओं की बढ़ती भूमिका को दर्शाता है और देशभर में महिला सशक्तिकरण को नई दिशा देने वाला साबित हो सकता है।</p>
+
+            <h3>दिल्ली में भाजपा की ऐतिहासिक जीत: 27 साल बाद सत्ता में वापसी, केजरीवाल और आप को बड़ा झटका!</h3>
+            <p>दिल्ली विधानसभा चुनाव 2025 में प्रधानमंत्री नरेंद्र मोदी की भारतीय जनता पार्टी (भाजपा) ने ऐतिहासिक जीत दर्ज की है, जो पिछले 27 वर्षों में पहली बार है। भाजपा ने 70 सदस्यीय विधानसभा में 48 सीटें जीतीं, जबकि आम आदमी पार्टी (आप) को 22 सीटों पर संतोष करना पड़ा। कांग्रेस पार्टी लगातार तीसरी बार एक भी सीट जीतने में असफल रही।</p>
+            <img src="images/political/voting.jpg" alt="">
+            <h3>चुनाव परिणाम और प्रमुख पराजय</h3>
+            <p>इस चुनाव में आप के प्रमुख नेता और दिल्ली के मुख्यमंत्री अरविंद केजरीवाल तथा उनके डिप्टी मनीष सिसोदिया अपनी-अपनी सीटों से हार गए। केजरीवाल ने नई दिल्ली सीट से चुनाव लड़ा था, जहां भाजपा के प्रवेश वर्मा ने उन्हें पराजित किया। सिसोदिया जंगपुरा सीट से चुनाव लड़े थे, जहां भाजपा के तरविंदर सिंह मारवाह ने उन्हें हराया।</p>
+
+            <h3>मतदान प्रतिशत और महिला मतदाताओं की भागीदारी</h3>
+            <p>चुनाव आयोग के अनुसार, इस बार मतदान प्रतिशत 60% से अधिक रहा, जिसमें महिलाओं की भागीदारी पुरुषों से अधिक थी। यह पहली बार है जब दिल्ली में महिला मतदाताओं का प्रतिशत पुरुषों से ज्यादा रहा, जो लोकतंत्र के लिए सकारात्मक संकेत है।</p>
+
+            <h3>भाजपा की रणनीति और चुनाव प्रचार</h3>
+            <p>भाजपा ने इस चुनाव में मध्यवर्गीय वोटरों को लुभाने के लिए आयकर में कटौती जैसे कदम उठाए। इसके अलावा, पार्टी ने सरकारी स्कूलों और स्वास्थ्य सेवाओं में सुधार, मुफ्त बिजली, और गरीब महिलाओं को मासिक भत्ता देने जैसे वादे किए। प्रधानमंत्री मोदी और गृह मंत्री अमित शाह ने चुनाव प्रचार में सक्रिय भूमिका निभाई, जिससे पार्टी को लाभ मिला।</p>
+
+            <h3>आप की पराजय के कारण</h3>
+            <p>आप पार्टी की पराजय के पीछे कई कारण रहे। पार्टी के प्रमुख नेताओं पर भ्रष्टाचार के आरोप और केजरीवाल की हालिया जेल यात्रा ने पार्टी की छवि को नुकसान पहुंचाया। इसके अलावा, भाजपा की आक्रामक चुनावी रणनीति और विपक्ष की एकजुटता की कमी ने भी आप की हार में योगदान दिया।</p>
+
+            <h3>कांग्रेस की स्थिति</h3>
+            <p>कांग्रेस पार्टी लगातार तीसरी बार दिल्ली विधानसभा में एक भी सीट जीतने में असफल रही। यह पार्टी के लिए गंभीर चिंतन का विषय है, क्योंकि दिल्ली में कभी कांग्रेस का मजबूत जनाधार था।</p>
+
+            <h3>भाजपा की आगे की चुनौतियां</h3>
+            <p>भाजपा के लिए यह जीत महत्वपूर्ण है, लेकिन अब उसे दिल्ली की जनता की अपेक्षाओं पर खरा उतरना होगा। पार्टी ने जो वादे किए हैं, उन्हें पूरा करना उसकी प्राथमिकता होनी चाहिए, ताकि जनता का विश्वास बना रहे।</p>
+
+            <h3>निष्कर्ष</h3>
+            <p>दिल्ली विधानसभा चुनाव 2025 के परिणाम ने राजधानी की राजनीति में एक नया अध्याय जोड़ा है। भाजपा की यह जीत न केवल पार्टी के लिए बल्कि प्रधानमंत्री मोदी के लिए भी महत्वपूर्ण है, क्योंकि यह उनके नेतृत्व में जनता के विश्वास को दर्शाती है। अब देखना होगा कि भाजपा आने वाले समय में दिल्ली की जनता की अपेक्षाओं पर कितना खरा उतरती है।</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Article 3 -->
+
+
+<!-- Popup for Expanded Article -->
+<div class="article-overlay" id="article3-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="images/crime/himaniNarwal (3).jpg" alt="himaniNarwal"> -->
+            <img src="images/political/delhi.png" alt="Delhi Election Image" style="width: 100%; height: auto; object-fit: contain;">
+
+            <div class="article-title">
+                <h2>दिल्ली में नया सियासी अध्याय: 27 साल बाद भाजपा की ऐतिहासिक जीत</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 42 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>दिल्ली विधानसभा चुनाव 2025 में प्रधानमंत्री नरेंद्र मोदी की भारतीय जनता पार्टी (भाजपा) ने ऐतिहासिक जीत दर्ज की, जो पिछले 27 वर्षों में पहली बार हुआ है। भाजपा ने 70 सदस्यीय विधानसभा में 48 सीटें जीतीं, जबकि आम आदमी पार्टी (आप) को 22 सीटों पर संतोष करना पड़ा। कांग्रेस पार्टी लगातार तीसरी बार एक भी सीट जीतने में असफल रही।</p>
+
+            <h3>चुनाव परिणाम और प्रमुख पराजय</h3>
+            <p>इस चुनाव में आप के प्रमुख नेता और दिल्ली के मुख्यमंत्री अरविंद केजरीवाल तथा उनके डिप्टी मनीष सिसोदिया अपनी-अपनी सीटों से हार गए। केजरीवाल को भाजपा के प्रवेश वर्मा ने नई दिल्ली सीट से हराया, जबकि सिसोदिया जंगपुरा सीट से भाजपा के तरविंदर सिंह मारवाह के सामने पराजित हुए।</p>
+
+            <h3>मतदान प्रतिशत और महिला मतदाताओं की भागीदारी</h3>
+            <p>चुनाव आयोग के अनुसार, इस बार मतदान प्रतिशत 60% से अधिक रहा, जिसमें महिलाओं की भागीदारी पुरुषों से अधिक थी। यह पहली बार है जब दिल्ली में महिला मतदाताओं की संख्या पुरुषों से अधिक रही, जो लोकतंत्र के लिए सकारात्मक संकेत है।</p>
+
+            <h3>भाजपा की रणनीति और चुनाव प्रचार</h3>
+            <p>भाजपा ने इस चुनाव में मध्यवर्गीय वोटरों को लुभाने के लिए आयकर में कटौती जैसे कदम उठाए। इसके अलावा, पार्टी ने सरकारी स्कूलों और स्वास्थ्य सेवाओं में सुधार, मुफ्त बिजली, और गरीब महिलाओं को मासिक भत्ता देने जैसे वादे किए। प्रधानमंत्री मोदी और गृह मंत्री अमित शाह ने चुनाव प्रचार में सक्रिय भूमिका निभाई, जिससे पार्टी को लाभ मिला।</p>
+
+            <h3>आप की पराजय के कारण</h3>
+            <p>आप पार्टी की पराजय के पीछे कई कारण रहे। पार्टी के प्रमुख नेताओं पर भ्रष्टाचार के आरोप और केजरीवाल की हालिया जेल यात्रा ने पार्टी की छवि को नुकसान पहुंचाया। इसके अलावा, भाजपा की आक्रामक चुनावी रणनीति और विपक्ष की एकजुटता की कमी ने भी आप की हार में योगदान दिया।</p>
+
+            <h3>कांग्रेस की स्थिति</h3>
+            <p>कांग्रेस पार्टी लगातार तीसरी बार दिल्ली विधानसभा में एक भी सीट जीतने में असफल रही। यह पार्टी के लिए गंभीर चिंतन का विषय है, क्योंकि दिल्ली में कभी कांग्रेस का मजबूत जनाधार था।</p>
+
+            <h3>भाजपा की आगे की चुनौतियां</h3>
+            <p>भाजपा के लिए यह जीत महत्वपूर्ण है, लेकिन अब उसे दिल्ली की जनता की अपेक्षाओं पर खरा उतरना होगा। पार्टी ने जो वादे किए हैं, उन्हें पूरा करना उसकी प्राथमिकता होनी चाहिए, ताकि जनता का विश्वास बना रहे।</p>
+
+            <h3>निष्कर्ष</h3>
+            <p>दिल्ली विधानसभा चुनाव 2025 के परिणाम ने राजधानी की राजनीति में एक नया अध्याय जोड़ा है। भाजपा की यह जीत न केवल पार्टी के लिए बल्कि प्रधानमंत्री मोदी के लिए भी महत्वपूर्ण है, क्योंकि यह उनके नेतृत्व में जनता के विश्वास को दर्शाती है। अब देखना होगा कि भाजपा आने वाले समय में दिल्ली की जनता की अपेक्षाओं पर कितना खरा उतरती है।</p>
+        </div>
+    </div>
+</div>
+
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Chronicles</h3>
+                <p>Chronicles is a leading independent news organization dedicated to providing accurate, unbiased
+                    reporting from around the world. Our team of experienced journalists works around the clock to bring
+                    you the most important stories.</p>
+                <div class="footer-logo">
+                    <i class="fas fa-newspaper"></i> Chronicles
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>News Categories</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crime.html">Crime</a></li>
+                    <li><a href="political.html">Political</a></li>
+                    <li><a href="sports.html">Cricket</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Lady Shri Ram College For Women</p>
+                <p><i class="fas fa-phone"></i> +91-987xxxxx99</p>
+                <p><i class="fas fa-envelope"></i> mishrayogita0018@gmail.com</p>
+                <div class="footer-social">
+                    <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a> -->
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chronicles. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateElement = document.getElementById('date');
+            const timeElement = document.getElementById('time');
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString('en-US', options);
+
+            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('fa-times');
+            this.classList.toggle('fa-bars');
+        });
+
+        // Region filter functionality
+        const regionBtns = document.querySelectorAll('.region-btn');
+        
+        regionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                regionBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would filter the news content
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            this.innerHTML = document.body.classList.contains('dark-mode') ?
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Article expansion functionality
+        const crimeCards = document.querySelectorAll('.crime-card');
+        
+        crimeCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-article');
+                const overlay = document.getElementById(`${articleId}-overlay`);
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when article is open
+            });
+        });
+
+        function closeArticle() {
+            const activeOverlay = document.querySelector('.article-overlay.active');
+            if (activeOverlay) {
+                activeOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        }
+
+        // Close article when clicking outside content
+        const articleOverlays = document.querySelectorAll('.article-overlay');
+        
+        articleOverlays.forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeArticle();
+                }
+            });
+        });
+
+        // Pause all videos when one plays
+        const allVideos = document.querySelectorAll("video");
+        allVideos.forEach(currentVideo => {
+            currentVideo.addEventListener("play", () => {
+                allVideos.forEach(video => {
+                    if (video !== currentVideo) {
+                        video.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

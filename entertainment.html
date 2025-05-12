@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment - Chronicles</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d92323;
+            --secondary: #333;
+            --accent: #d92323;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('images/entertainment/entertainment\ background.jpg') no-repeat center center/cover;
+            font-family: 'PT Serif', serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://source.unsplash.com/random/1920x1080/?crime,police') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .date-time span {
+            margin-right: 15px;
+        }
+        
+        .weather-widget span {
+            margin-left: 8px;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        .dark-mode-toggle {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .logo-container {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        nav {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 15px 0;
+            display: block;
+            transition: color 0.3s;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links li a.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+        
+        .search-container input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
+            width: 200px;
+        }
+        
+        .search-container button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-container button:hover {
+            background: #b51c1c;
+        }
+        
+        .hamburger {
+            display: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        /* Crime Header */
+        .crime-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1600x600/?crime,investigation') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .crime-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Noto Sans', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .crime-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Breaking News Ticker */
+        .breaking-news {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+        
+        .breaking-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breaking-label {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            margin-right: 20px;
+            font-weight: 700;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+        
+        .ticker {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+        
+        .ticker-content a {
+            color: white;
+            text-decoration: none;
+            margin-right: 40px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .ticker-content a:hover {
+            color: #f8f9fa;
+            text-decoration: underline;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Crime News Grid */
+        .crime-featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .crime-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .crime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .crime-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .crime-card-content {
+            padding: 20px;
+        }
+        
+        .crime-card-content .location {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .crime-card-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        .crime-card-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        /* Expanded Article View */
+        .article-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .article-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .expanded-article {
+            background: #fff;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 8px;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .article-overlay.active .expanded-article {
+            transform: scale(1);
+        }
+        
+        .close-article {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        
+        .close-article:hover {
+            background: #b51c1c;
+        }
+        
+        .article-header {
+            position: relative;
+        }
+        
+        .article-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .article-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+        
+        .article-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .article-title .meta {
+            color: #eee;
+        }
+        
+        .article-body {
+            padding: 30px;
+        }
+        
+        .article-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        /* Crime Timeline */
+        .crime-timeline {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-date {
+            flex: 0 0 120px;
+            text-align: right;
+            padding-right: 30px;
+            position: relative;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .timeline-date::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            border-left: 2px solid var(--primary);
+            background: #fff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-about h3,
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .footer-about h3::after,
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                margin: 15px auto;
+                width: 80%;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .article-header img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date-time,
+            .weather-widget,
+            .social-icons {
+                margin-bottom: 8px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                padding: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .crime-header {
+                padding: 70px 20px;
+            }
+            
+            .crime-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .crime-header p {
+                font-size: 1rem;
+            }
+            
+            .breaking-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .breaking-label {
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                text-align: left;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+            
+            .timeline-date::after {
+                left: -6px;
+                top: auto;
+                bottom: 0;
+            }
+            
+            .timeline-content {
+                padding-left: 15px;
+                border-left: none;
+                border-top: 2px solid var(--primary);
+                padding-top: 15px;
+                border-radius: 0 0 8px 8px;
+            }
+            
+            .article-header img {
+                height: 200px;
+            }
+            
+            .article-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .crime-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .crime-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="date-time">
+                    <span id="date"></span>
+                    <span id="time"></span>
+                </div>
+                <div class="weather-widget">
+                    <span id="weather-icon"><i class="fas fa-cloud-sun"></i></span>
+                    <span id="weather-temp">24°C</span>
+                    <span id="weather-city">New Delhi</span>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="dark-mode-toggle">
+                        <!-- <i class="fas fa-moon"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chronicles Logo" style="width:70; height: 70; max-width: 70px;">
+                <div class="logo-text">क्रोnicles</div>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="crime.html">Crime</a></li>
+                <li><a href="political.html">Political</a></li>
+                <li><a href="sports.html">Cricket</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="entertainment.html" class="active">Entertainment</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-container">
+            <div class="breaking-label">BREAKING:</div>
+            <div class="ticker">
+                <div class="ticker-content">
+                    <a href="#">बजरंगी भाईजान 2 की घोषणा: सलमान खान ने दिया बड़ा संकेत •</a>
+                    <a href="#">बॉलीवुड की गंदी सच्चाई: पेड रिव्यूज ने इंडस्ट्री की विश्वसनीयता पर उठाए सवाल •</a>
+                    <a href="#">'संतोष' फिल्म पर सेंसरशिप की गाज, जातीय भेदभाव पर आधारित फिल्म पर लगा प्रतिबंध •</a>
+                    <a href="#">करण जौहर की नई वेब सीरीज़ जल्द होगी रिलीज़, ट्रेलर हुआ वायरल •</a>
+                    <a href="#">सिनेमा हॉल में टिकट की कीमतों को लेकर दर्शकों में नाराज़गी, निर्माताओं पर सवाल</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Crime News Header -->
+    <div class="crime-header">
+        <h1>मनोरंजन समाचार</h1>
+        <!-- <p>देशभर से आपराधिक मामलों, जांचों और कानून प्रवर्तन गतिविधियों से जुड़ी ताज़ा जानकारी। सुरक्षा और न्याय से संबंधित खबरों से जुड़े रहें</p> -->
+         <p>देशभर और विदेश से फिल्म, टीवी, वेब सीरीज़ और सेलिब्रिटी गतिविधियों से जुड़ी ताज़ा जानकारी। ग्लैमर और मनोरंजन की दुनिया की हर हलचल से जुड़े रहें</p>
+        <!-- <p>Latest updates on criminal cases, investigations, and law enforcement activities from across the country. Stay informed about safety and justice.</p> -->
+    </div>
+
+    <main class="container">
+        <!-- Featured Crime News -->
+        <section>
+            <h2 class="section-title">मनोरंजन सुर्खियाँ</h2>
+            <div class="crime-featured">
+                <!-- CARD 1 -->
+                <article class="crime-card" data-article="article1">
+                    <img src="images/entertainment/salman.jpg" alt="Crime Investigation">
+                    <div class="crime-card-content">
+                        <span class="location">Haryana</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: आरोपी को लेकर पुलिस ने किया क्राइम सीन का पुनर्निर्माण</h3> -->
+                         <h3>बजरंगी भाईजान 2 की घोषणा: सलमान खान ने किया संकेत, कबीर खान ने दी प्रतिक्रिया</h3>
+                        <!-- <p>हरियाणा पुलिस ने कांग्रेस कार्यकर्ता हिमानी नरवाल की हत्या के आरोपी सचिन को क्राइम सीन पर ले जाकर...</p> -->
+                         <p>बॉलीवुड सुपरस्टार सलमान खान ने हाल ही में अपनी 2015 की ब्लॉकबस्टर फिल्म 'बजरंगी भाईजान' के सीक्वल की संभावना को लेकर संकेत दिए हैं। उन्होंने एक प्रेस कॉन्फ्रेंस के दौरान कहा कि ...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 42 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 2 -->
+                <article class="crime-card" data-article="article2">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?police,arrest" alt="Police Arrest"> -->
+                     <img src="images/entertainment/bollywood.jpg" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Maharashtra</span>
+                        <!-- <h3>पुणे बस बलात्कार मामला: आरोपी दत्तात्रेय रामदास गाडे गिरफ्तार</h3> -->
+                         <h3>बॉलीवुड की गंदी सच्चाई: पेड रिव्यूज और इंडस्ट्री का संकट​</h3>
+                        <!-- <p>पुणे पुलिस ने बलात्कार के आरोपी गाडे को शिरूर तहसील से गिरफ्तार किया है। शहर में आक्रोश...</p> -->
+                         <p>बॉलीवुड, जो कभी भारतीय सिनेमा का गौरव था, आज एक गंभीर संकट से जूझ रहा है। इस संकट की जड़ में है 'पेड रिव्यूज' की बढ़ती प्रथा, जिसने फिल्म समीक्षाओं की विश्वसनीयता को गंभीर रूप से प्रभावित किया है। निर्माताओं द्वारा सकारात्मक समीक्षाओं के लिए भुगतान करना अब एक आम बात हो गई है...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            <span><i class="far fa-comment"></i> 28 comments</span>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- CARD 3 -->
+                <article class="crime-card" data-article="article3">
+                    <!-- <img src="https://source.unsplash.com/random/600x400/?kidnapping,crime" alt="Kidnapping Case"> -->
+                     <img src="images/crime/gurgram.jpeg" alt="">
+                    <div class="crime-card-content">
+                        <span class="location">Delhi</span>
+                        <!-- <h3>दिल्ली में बड़ा अपहरण मामला: व्यापारी को 5 करोड़ की फिरौती मांगकर अगवा किया गया</h3> -->
+                         <h3> 'संतोष' पर सेंसरशिप की गाज: पुलिस बर्बरता और जातीय भेदभाव पर आधारित फिल्म भारत में प्रतिबंधित</h3>
+                        <!-- <p>दक्षिण दिल्ली के एक प्रमुख व्यापारी को उसके घर के बाहर से अगवा कर लिया गया। अपहरणकर्ताओं ने...</p> -->
+                         <p>ब्रिटिश-भारतीय फिल्म निर्माता संध्या सुरी की चर्चित फिल्म 'संतोष' को भारत में सेंसर बोर्ड (CBFC) द्वारा रिलीज़ की अनुमति नहीं दी गई है। फिल्म भारतीय पुलिस में मौजूद जातीय भेदभाव...</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="far fa-comment"></i> 15 comments</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    
+
+
+        <!-- Video Reports Section -->
+        <section>
+            <h2 class="section-title">Video Reports</h2>
+            <div class="crime-featured">
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1P2SO6-W78F9jrTnoHTU0r86ALqpaOKY9/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: क्राइम सीन का पुनर्निर्माण | CCTV फुटेज</h3> -->
+                        <h3>बॉलीवुड की नजर से: पसंदीदा सितारे, अनदेखी प्रतिभाएं और निर्देशन की कला
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1SpzEkwURIxQJucNtgdVkxXV2IgYxNaFQ/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल हत्याकांड: सबूत, सवाल और साज़िश | Full Case Analysis</h3> -->
+                        <h3>बॉलीवुड बनाम हॉलीवुड बनाम साउथ सिनेमा: कहानियों, शैलियों और संस्कृतियों की टक्कर
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+
+                <article class="crime-card">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1T7x5xaAvvAyt7Kh1qIZ_ZDTVH-cjTrcf/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <!-- <h3>हिमानी नरवाल केस में नया खुलासा: वीडियो में दिखे संदिग्ध</h3> -->
+                         <h3>आज का बॉलीवुड: पसंदीदा फिल्में, मौजूदा ट्रेंड्स और पर्दे पर प्रतिनिधित्व
+                        </h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                
+                
+                <!-- <article class="crime-card">
+                    <video src="videos/crime/Crime bear 2.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>पुणे बस बलात्कार मामला: आरोपी की गिरफ्तारी का वीडियो</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 4 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 890K views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="crime-card">
+                    <video src="videos/crime/Crime beat 3.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>नोएडा स्नैचिंग केस: CCTV में कैद हुआ पूरा वाकया</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 890K views</span>
+                        </div>
+                    </div>
+                </article> -->
+                
+                <!-- <article class="crime-card">
+                    <video src="videos/crime3.mp4" controls></video>
+                    <div class="crime-card-content">
+                        <span class="location">Exclusive</span>
+                        <h3>नोएडा स्नैचिंग केस: CCTV में कैद हुआ पूरा वाकया</h3>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                            <span><i class="fas fa-eye"></i> 750K views</span>
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Expanded Article Overlays -->
+    <!-- Article 1 -->
+<div class="article-overlay" id="article1-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="https://source.unsplash.com/random/900x500/?salman,bollywood" alt="Bajrangi Bhaijaan 2"> -->
+            <img src="images/entertainment/salman.jpg" alt="">
+            <div class="article-title">
+                <h2>बजरंगी भाईजान 2 की घोषणा: सलमान खान ने किया संकेत, कबीर खान ने दी प्रतिक्रिया</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 2 hours ago</span>
+                    <span><i class="far fa-comment"></i> 134 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>बॉलीवुड सुपरस्टार सलमान खान ने हाल ही में अपनी 2015 की ब्लॉकबस्टर फिल्म <strong>'बजरंगी भाईजान'</strong> के सीक्वल को लेकर उत्साह बढ़ा दिया है। एक प्रेस कॉन्फ्रेंस के दौरान उन्होंने बताया कि निर्देशक <strong>कबीर खान</strong> इस सीक्वल की स्क्रिप्ट पर काम कर रहे हैं। हालांकि, कबीर खान ने स्पष्ट किया है कि फिलहाल स्क्रिप्ट तैयार नहीं है और वे केवल तभी इस परियोजना को आगे बढ़ाएंगे जब उन्हें कहानी रोमांचक और प्रेरक लगेगी।</p>
+
+            <p><strong>सलमान खान का संकेत</strong><br>
+            सलमान खान ने अपनी आगामी फिल्म 'सिकंदर' के प्रचार के दौरान 'बजरंगी भाईजान 2' पर मजाकिया अंदाज में कहा, "उसका प्रॉब्लम ये होगा कि जब उसका सीक्वल बनेगा तो मुन्नी बात करेगी।" इस हल्के-फुल्के अंदाज में दिए गए बयान से यह संकेत मिलता है कि फिल्म में एक समय का अंतराल दिखाया जाएगा, जिसमें मुन्नी अब बोलने में सक्षम होगी।</p>
+
+            <p><strong>कबीर खान की प्रतिक्रिया</strong><br>
+            इस पर निर्देशक कबीर खान ने साफ किया कि अभी तक न स्क्रिप्ट तैयार है और न ही कोई ठोस विचार। उन्होंने कहा, "यह घोषणा सलमान ने की थी। जब तक मुझे कोई कहानी उत्साहित नहीं करती, मैं उस पर काम शुरू नहीं करता। मैं सिर्फ इसलिए सीक्वल नहीं बनाऊंगा क्योंकि पहली फिल्म हिट थी।"</p>
+
+            <div class="article-image">
+                <!-- <img src="https://source.unsplash.com/random/800x400/?bollywood,movie" alt="Kabir Khan Salman"> -->
+                <img src="images/entertainment/salman1.jpeg" width="600" alt="">
+                <p class="image-caption">सलमान खान और कबीर खान — संभावित सीक्वल पर बातचीत (फाइल फोटो)</p>
+            </div>
+
+            <p><strong>बजरंगी भाईजान की सफलता</strong><br>
+            2015 में रिलीज़ हुई 'बजरंगी भाईजान' न सिर्फ सलमान खान के करियर की सबसे सफल फिल्मों में से एक रही, बल्कि इसने बॉक्स ऑफिस पर भी जबरदस्त प्रदर्शन किया। फिल्म ने वैश्विक स्तर पर ₹900 करोड़ से अधिक की कमाई की थी। कहानी में मानवता, प्रेम और सीमा पार भाईचारे का संदेश था, जिसे दर्शकों ने दिल से अपनाया। फिल्म में सलमान के साथ करीना कपूर खान, नवाजुद्दीन सिद्दीकी और हर्षाली मल्होत्रा ने अहम भूमिकाएं निभाईं।</p>
+
+            <p><strong>सीक्वल से उम्मीदें</strong><br>
+            हालांकि सीक्वल को लेकर अभी तक कोई ठोस स्क्रिप्ट सामने नहीं आई है, लेकिन सलमान के बयान से संकेत मिलता है कि यह कहानी पहले से कुछ साल आगे बढ़ेगी। दर्शक उत्साहित हैं यह जानने के लिए कि मुन्नी का किरदार समय के साथ कैसे बदला है और पवन कुमार चतुर्वेदी (सलमान खान) अब किस नई मानवीय चुनौती का सामना करेंगे।</p>
+
+            <p><strong>सलमान खान की अगली फिल्म 'सिकंदर'</strong><br>
+            'बजरंगी भाईजान 2' से पहले सलमान खान 2025 की ईद पर 'सिकंदर' के साथ बड़े पर्दे पर वापसी करने जा रहे हैं। यह फिल्म ए. आर. मुरुगादॉस द्वारा निर्देशित और साजिद नाडियाडवाला द्वारा निर्मित है। इसमें सलमान के साथ रश्मिका मंदाना, काजल अग्रवाल, प्रतीक बब्बर और सत्यराज जैसे कलाकार नजर आएंगे। 'सिकंदर' को एक पावर-पैक्ड एक्शन फिल्म माना जा रहा है, जो 30 मार्च 2025 को सिनेमाघरों में रिलीज होगी।</p>
+
+            <p><strong>निष्कर्ष</strong><br>
+            'बजरंगी भाईजान 2' को लेकर सलमान खान की टिप्पणी ने जहां फैंस में उत्साह बढ़ाया है, वहीं कबीर खान की स्पष्टता से साफ हो गया है कि यह प्रोजेक्ट अभी शुरुआती चरण में है। जब तक एक दमदार और दिल को छूने वाली कहानी नहीं मिलती, तब तक सीक्वल की शुरुआत नहीं होगी। फैंस उम्मीद कर रहे हैं कि उन्हें एक बार फिर पवन और मुन्नी की भावुक यात्रा देखने को मिलेगी।</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Article 2 -->
+    <!-- Article 2 -->
+<div class="article-overlay" id="article2-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="https://source.unsplash.com/random/900x500/?bollywood,review" alt="Bollywood Scandal"> -->
+            <img src="images/entertainment/bollywood.jpg" alt="">
+            <div class="article-title">
+                <h2>बॉलीवुड की गंदी सच्चाई: पेड रिव्यूज और इंडस्ट्री का संकट​</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 1 hour ago</span>
+                    <span><i class="far fa-comment"></i> 87 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p>बॉलीवुड, जो कभी भारतीय सिनेमा की शान माना जाता था, आज एक गहरे संकट से जूझ रहा है। इस संकट का मूल कारण है 'पेड रिव्यूज' की बढ़ती परंपरा, जिसने फिल्म समीक्षाओं की विश्वसनीयता को गंभीर रूप से प्रभावित किया है। अब निर्माताओं द्वारा समीक्षकों और सोशल मीडिया इन्फ्लुएंसर्स को सकारात्मक रिव्यू देने के लिए भुगतान करना एक आम चलन बन गया है।</p>
+
+            <p><strong>पेड रिव्यूज: एक खुला रहस्य</strong><br>
+            फिल्म समीक्षक और ट्रेड एनालिस्ट कोमल नाहटा के अनुसार, "90 प्रतिशत पत्रकार या तो नकद या किसी अन्य लाभ के बदले में समीक्षा लिखते हैं।" निर्माता सोशल मीडिया इन्फ्लुएंसर्स को ₹15,000 से ₹60,000 तक एक पोस्ट के लिए देते हैं, और एक फुल प्रमोशनल कैंपेन ₹2 लाख से ऊपर जा सकता है।</p>
+
+            <p><strong>करण जौहर की स्वीकारोक्ति</strong><br>
+            मशहूर फिल्म निर्माता करण जौहर ने एक इंटरव्यू में स्वीकार किया, "कई बार हम पीआर के तहत लोगों को भेजते हैं और कहते हैं कि फिल्म की तारीफ करें। ये होता है। कभी-कभी आप अपनी पहचान बनाने के लिए यह करते हैं।" यह बयान इंडस्ट्री में पेड रिव्यूज के सामान्य होते चलन को उजागर करता है।</p>
+
+            <div class="article-image">
+                <img src="images/entertainment/bollywood1.jpg" width="600" alt="">
+                <p class="image-caption">करण जौहर ने स्वीकार किया कि उन्होंने भी पेड रिव्यूज का सहारा लिया (फाइल फोटो)</p>
+            </div>
+
+            <p><strong>'जिगरा' विवाद और प्रेस स्क्रीनिंग का अंत</strong><br>
+            धर्मा प्रोडक्शंस की फिल्म 'जिगरा' की रिलीज़ से पहले करण जौहर ने ऐलान किया कि अब उनकी फिल्मों की प्रेस स्क्रीनिंग नहीं होगी। उनके अनुसार, "समीक्षक पैसे लेकर अच्छी या बुरी समीक्षा करते हैं, कभी-कभी ब्लैकमेल भी करते हैं।" यह फैसला दर्शकों को प्राथमिकता देने और समीक्षकों के प्रभाव को सीमित करने के लिए लिया गया।</p>
+
+            <p><strong>धर्मा प्रोडक्शंस की वित्तीय स्थिति</strong><br>
+            साल 2024 में धर्मा प्रोडक्शंस की आय ₹1,040 करोड़ से गिरकर ₹512 करोड़ हो गई। इस गिरावट के चलते करण जौहर ने कंपनी की 50% हिस्सेदारी सीरम इंस्टीट्यूट के CEO अदार पूनावाला को ₹1,000 करोड़ में बेच दी। यह सौदा इंडस्ट्री की आर्थिक अस्थिरता को दर्शाता है।</p>
+
+            <p><strong>नैतिकता का संकट</strong><br>
+            फिल्म समीक्षाएं अब दर्शकों के लिए मार्गदर्शक की बजाय मार्केटिंग टूल बन गई हैं। दर्शकों को समझना कठिन हो गया है कि कौन सी समीक्षा सच्ची है और कौन सी खरीदी हुई। इस स्थिति ने इंडस्ट्री में नैतिकता के स्तर को गिरा दिया है।</p>
+
+            <p><strong>समाधान की दिशा में कदम</strong></p>
+            <ul>
+                <li><strong>समीक्षकों के लिए आचार संहिता:</strong> सभी समीक्षकों के लिए स्पष्ट गाइडलाइंस होनी चाहिए, जिसमें पेड रिव्यूज पर प्रतिबंध हो।</li>
+                <li><strong>पारदर्शिता:</strong> रिव्यू करते समय स्पष्ट रूप से बताना चाहिए कि वह प्रायोजित है या नहीं।</li>
+                <li><strong>दर्शकों की जागरूकता:</strong> लोगों को यह समझाया जाना चाहिए कि पेड रिव्यूज कैसे काम करते हैं और उनसे कैसे बचें।</li>
+                <li><strong>स्वतंत्र प्लेटफॉर्म्स:</strong> ऐसे रिव्यू प्लेटफॉर्म्स को बढ़ावा देना चाहिए जो स्वतंत्र और निष्पक्ष हों।</li>
+            </ul>
+
+            <p><strong>निष्कर्ष</strong><br>
+            बॉलीवुड की मौजूदा स्थिति चिंताजनक है। पेड रिव्यूज ने इंडस्ट्री की विश्वसनीयता को गहरा आघात पहुंचाया है। यदि निर्माता, समीक्षक और दर्शक मिलकर इस प्रवृत्ति का विरोध नहीं करेंगे, तो आने वाले समय में दर्शकों का विश्वास पूरी तरह से टूट सकता है। सिनेमा को सच्चाई, पारदर्शिता और नैतिकता की ओर लौटाना अब समय की मांग है।</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Article 3 -->
+    <!-- Article 3 -->
+<div class="article-overlay" id="article3-overlay">
+    <div class="expanded-article">
+        <div class="close-article" onclick="closeArticle()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="article-header">
+            <!-- <img src="https://source.unsplash.com/random/900x500/?indian-cinema,censorship" alt="Santosh Film Ban"> -->
+            <img src="images/entertainment/santosh.png" alt="">
+            <div class="article-title">
+                <h2>'संतोष' पर सेंसरशिप की गाज: पुलिस बर्बरता और जातीय भेदभाव पर आधारित फिल्म भारत में प्रतिबंधित</h2>
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> 3 hours ago</span>
+                    <span><i class="far fa-comment"></i> 42 comments</span>
+                    <span><i class="fas fa-share-alt"></i> Share</span>
+                </div>
+            </div>
+        </div>
+        <div class="article-body">
+            <p><strong>भूमिका</strong><br>
+            ब्रिटिश-भारतीय फिल्म निर्माता संध्या सुरी की चर्चित फिल्म <strong>'संतोष'</strong> को भारत में सेंसर बोर्ड (CBFC) द्वारा रिलीज़ की अनुमति नहीं दी गई है। फिल्म भारतीय पुलिस में मौजूद जातीय भेदभाव, पितृसत्ता, और इस्लामोफोबिया जैसे संवेदनशील मुद्दों पर प्रकाश डालती है। CBFC ने इस फिल्म को सामाजिक सौहार्द के लिए 'हानिकारक' मानते हुए कई कटौती की मांग की, जिसे फिल्म की टीम ने अस्वीकार कर दिया। नतीजतन, फिल्म की भारतीय थिएटर रिलीज़ पर रोक लग गई।</p>
+
+            <p><strong>फिल्म का सारांश</strong><br>
+            उत्तर भारत के एक छोटे से कस्बे की पृष्ठभूमि में बनी 'संतोष' एक विधवा महिला की कहानी है (शहाना गोस्वामी द्वारा निभाया गया किरदार), जो अपने दिवंगत पति की जगह पुलिस बल में शामिल होती है। जब उसे एक दलित लड़की की हत्या की जांच सौंपी जाती है, तब वह जातिगत भेदभाव, पुलिसिया हिंसा और प्रशासनिक भ्रष्टाचार से जूझती है। फिल्म यह दिखाती है कि एक महिला अफसर एक पुरुष प्रधान और जातिवादी सिस्टम में कैसे न्याय की लड़ाई लड़ती है।</p>
+
+            <div class="article-image">
+                <img src="images/entertainment/santosh1.jpg" alt="">
+                <p class="image-caption">शहाना गोस्वामी ने फिल्म में एक सशक्त महिला अधिकारी की भूमिका निभाई है</p>
+            </div>
+
+            <p><strong>अंतरराष्ट्रीय मान्यता</strong><br>
+            'संतोष' ने 2024 के कान्स फिल्म फेस्टिवल के 'Un Certain Regard' सेक्शन में प्रीमियर किया और अंतरराष्ट्रीय समीक्षकों से खूब सराहना पाई। यह फिल्म ब्रिटेन की ओर से ऑस्कर 2025 की 'सर्वश्रेष्ठ अंतरराष्ट्रीय फीचर' श्रेणी के लिए आधिकारिक प्रविष्टि थी। साथ ही, इसे BAFTA में 'श्रेष्ठ डेब्यू फीचर' के लिए भी नामांकित किया गया। शहाना गोस्वामी ने एशियन फिल्म अवार्ड्स में 'सर्वश्रेष्ठ अभिनेत्री' का पुरस्कार भी जीता।</p>
+
+            <p><strong>CBFC का निर्णय और विवाद</strong><br>
+            सेंसर बोर्ड ने फिल्म की स्क्रीनिंग के लिए एक लंबी कट लिस्ट जारी की, जिसमें जातीय भेदभाव, इस्लामोफोबिया और पुलिस बर्बरता से जुड़े कई महत्वपूर्ण दृश्य हटाने की मांग की गई। निर्देशक संध्या सुरी ने यह कहते हुए इन कट्स को अस्वीकार किया कि, "फिल्म की आत्मा को खत्म करने जैसा होगा यह। यह निराशाजनक है कि एक ईमानदार कहानी को भारत में दर्शकों तक नहीं पहुंचने दिया जा रहा।"</p>
+
+            <p><strong>कलाकारों की प्रतिक्रिया</strong><br>
+            मुख्य अभिनेत्री शहाना गोस्वामी ने भी अपनी निराशा जाहिर की। उन्होंने कहा, "यह विडंबना है कि एक फिल्म, जो हमारे समाज की गहराइयों को छूती है, उसे उसके अपने देश में देखने की अनुमति नहीं मिल रही है।"</p>
+
+            <p><strong>सेंसरशिप बनाम रचनात्मक स्वतंत्रता</strong><br>
+            भारत में सेंसरशिप बनाम रचनात्मक आज़ादी की बहस लम्बे समय से चल रही है। 'संतोष' का मामला यह सवाल फिर खड़ा करता है कि क्या सिनेमा को सामाजिक मुद्दों पर खुलकर बोलने की इजाज़त होनी चाहिए। जहां CBFC समाज में शांति बनाए रखने की बात करता है, वहीं फिल्म निर्माता इसे रचनात्मक स्वतंत्रता पर हमला मानते हैं।</p>
+
+            <p><strong>निष्कर्ष</strong><br>
+            'संतोष' सिर्फ एक फिल्म नहीं, बल्कि हमारे समाज के कई अनकहे और अनछुए पहलुओं को उजागर करने वाली रचना है। इसकी रिलीज़ पर रोक लगाना दर्शकों को एक ज़रूरी संवाद से वंचित करता है। यह समय है कि सेंसरशिप की सीमाएं तय हों और रचनात्मक स्वतंत्रता को सम्मान मिले, ताकि समाज एक बेहतर दिशा में बढ़ सके।</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Chronicles</h3>
+                <p>Chronicles is a leading independent news organization dedicated to providing accurate, unbiased
+                    reporting from around the world. Our team of experienced journalists works around the clock to bring
+                    you the most important stories.</p>
+                <div class="footer-logo">
+                    <i class="fas fa-newspaper"></i> Chronicles
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>News Categories</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crime.html">Crime</a></li>
+                    <li><a href="political.html">Political</a></li>
+                    <li><a href="sports.html">Cricket</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Lady Shri Ram College For Women</p>
+                <p><i class="fas fa-phone"></i> +91-987xxxxx99</p>
+                <p><i class="fas fa-envelope"></i> mishrayogita0018@gmail.com</p>
+                <div class="footer-social">
+                    <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a> -->
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chronicles. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateElement = document.getElementById('date');
+            const timeElement = document.getElementById('time');
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString('en-US', options);
+
+            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('fa-times');
+            this.classList.toggle('fa-bars');
+        });
+
+        // Region filter functionality
+        const regionBtns = document.querySelectorAll('.region-btn');
+        
+        regionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                regionBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would filter the news content
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            this.innerHTML = document.body.classList.contains('dark-mode') ?
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Article expansion functionality
+        const crimeCards = document.querySelectorAll('.crime-card');
+        
+        crimeCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-article');
+                const overlay = document.getElementById(`${articleId}-overlay`);
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when article is open
+            });
+        });
+
+        function closeArticle() {
+            const activeOverlay = document.querySelector('.article-overlay.active');
+            if (activeOverlay) {
+                activeOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        }
+
+        // Close article when clicking outside content
+        const articleOverlays = document.querySelectorAll('.article-overlay');
+        
+        articleOverlays.forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeArticle();
+                }
+            });
+        });
+
+        // Pause all videos when one plays
+        const allVideos = document.querySelectorAll("video");
+        allVideos.forEach(currentVideo => {
+            currentVideo.addEventListener("play", () => {
+                allVideos.forEach(video => {
+                    if (video !== currentVideo) {
+                        video.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
